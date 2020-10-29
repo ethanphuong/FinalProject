@@ -1,10 +1,10 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\<"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project title\>
+# Cooking by the Book
  > Your author list below should include links to all members GitHub and should begin with a "\<" (remove existing author).
  
- > Authors: \<[Jeffrey McDaniel](https://github.com/jmcda001)\>
+ > Authors: [Brandon Tran](https://github.com/bran-dont), [Ethan Phuong](https://github.com/ethanphuong), [Vy Vo](https://github.com/vyvanvo)
  
  > You will be forming a group of **THREE** students and work on an interesting project that you will propose yourself (in this `README.md` document). You can pick any project that you'd like, but it needs ot implement three design patterns. Each of the members in a group is expected to work on at least one design pattern and its test cases. You can, of course, help each other, but it needs to be clear who will be responsible for which pattern and for which general project features.
  
@@ -17,13 +17,14 @@
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project?
- > * What are the three design patterns you will be using. For each design pattern you must:
- >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
+ > * Our application is designed to help cooks store their many recipes in one organized area. Each cook has their own way of remembering their recipes: some remember them by heart, others use online resources to find them. However, with our digitalized cookbook, every cook can now keep their recipes in one place as well as add recipes easily, without having to go through the trouble of creating a physical book or constantly searching for the recipe that they found online.
+ > * We will be using C++ and AndroidStudio in order to implement our project.
+ >   * [AndroidStudio](https://developer.android.com/studio/) - AndroidStudio is an IDE that can be used to create Android applications, as well as test them quickly using their phone emulator feature. 
+ > * Our application will take a user input of recipes (ingredients, instructions, images) and output a large collection of recipes as a cookbook. This cookbook will have categories and labels that will allow the user to search for and access desired recipes easily. The cookbook can also be output as a smaller list of specific recipes based on how the user filters the cookbook.
+ > * Our project will use the Composite, Abstract Factory, and Iterator design patterns:
+ >   * Composite – We chose to implement Composite because of the structure of our classes. With a digital cookbook, we will have pages that can act either as directories to recipes, or the recipes themselves. Due to this recursive nature, implementing the Composite design structure will be beneficial now and if we need to add more layers of recursion in the future.  For example, if we later want to group all Asian foods, we can create a new directory (and thus a new layer of recursion) to group all Asian foods (Thai, Vietnamese, etc).
+ >   * Abstract Factory - We chose to implement Abstract Factory because we want to be able to categorize the recipes into related categories. For a person using this app, having categorized items would make it easier to find related recipes. For instance, we can compile a list of all lunch food for the user, or a list that has all breakfast food, depending on the user’s specifications. The lists have these categories because our recipe is ordered first by ethnicity, then by type of meal. 
+ >   * Iterator - We chose to implement Iterator because we are storing our recipes into a tree structure. We decided that it would be best to use an iterator to traverse the tree in order to delegate the duty of data traversal to another class, rather than implementing multiple traversal methods in our code. In addition, implementing the Iterator design pattern will allow us to utilize multiple traversal methods such as breadth-first search and depth-first search. The Iterator design pattern will also help users search through their recipes when they are filtering the entire cookbook by tags/labels (such as eggs, gluten-free, vegan, etc).
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
 
  > ## Phase II
