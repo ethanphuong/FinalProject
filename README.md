@@ -39,7 +39,9 @@
  >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
  > Include a class diagram(s) for each design pattern and a description of the diagram(s). This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
- > ![Cookbook class diagram](https://github.com/cs100/final-project-ephuo001-btran117-vvo025/blob/main/Cookbook.png?raw=true)
+ 
+ > ![Cookbook class diagram](https://github.com/cs100/final-project-ephuo001-btran117-vvo025/blob/master/Cookbook.png?raw=true)
+ 
  > The cookbook has pages that are either categories or recipes. The category will have a list of pages which is how we will implement the composite pattern. It also has a strategy pattern to compile a list based on the user's specification. There are three different strategies for compiling a list base on tags, ingredients, and title. The cookbook also has a page iterator that iterates through each page or go back to the previous page in the cookbook.
  
  ## Phase III
