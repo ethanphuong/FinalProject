@@ -42,7 +42,20 @@
  
  > ![Cookbook class diagram](https://github.com/cs100/final-project-ephuo001-btran117-vvo025/blob/master/Cookbook.png?raw=true)
  
- > The cookbook has pages that are either categories or recipes. The category will have a list of pages which is how we will implement the composite pattern. It also has a strategy pattern to compile a list based on the user's specification. There are three different strategies for compiling a list base on tags, ingredients, and title. The cookbook also has a page iterator that iterates through each page or go back to the previous page in the cookbook.
+ > Our OMT Class Diagram combines the Composite, Strategy and Iterator design patterns together with our Cookbook class:
+ > * Composite: The cookbook has pages that are either categories or recipes. The category will have a list of pages which is how we will implement the composite pattern.
+ >   * Page: interface used as a template for the Recipe and Category classes
+ >   * Recipe: concrete leaf class used to instantiate recipe objects
+ >   * Category: composite class used to store multiple Page pointers, in order to act as a list of Recipes/Categories
+ > * Strategy: We implement the strategy pattern to compile a list based on the user's specifications. There are three different strategies for compiling a list base on tags, ingredients, and title.
+ >   * CompileList: interface used as a template for our concrete strategies
+ >   * TagCompileList: concrete strategy for when the user searches using tags
+ >   * TitleCompileList: concrete strategy for when user searches using title of pages
+ >   * IngredientsCompileList: concrete strategy for when user searches using ingredients of recipes
+ > * Iterator: The cookbook also has a page iterator that iterates through each page or go back to the previous page in the cookbook.
+ >   * Iterator: interface used as a template for concrete iterator classes
+ >   * CookbookIterator: concrete iterator that we will be using in our project
+ >   * Book: interface used as a template for concrete collections that need iterators
  
  ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
