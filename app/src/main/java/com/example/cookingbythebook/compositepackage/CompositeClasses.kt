@@ -2,10 +2,12 @@ package com.example.cookingbythebook.compositepackage
 
 interface Page {
     abstract var title: String
+    abstract var isRecipe: Boolean
 }
 
 class Recipe : Page {
     override var title: String = ""
+    override var isRecipe: Boolean = true
     var tags = ArrayList<String>()
     var ingredients = ArrayList<String>()
     var instructions = ArrayList<String>()
@@ -24,6 +26,7 @@ class Recipe : Page {
 
 class Category : Page {
     override var title: String = ""
+    override var isRecipe: Boolean = false
     var pages = ArrayList<Page>()
 
     fun Category(__title:String){ title = __title }
