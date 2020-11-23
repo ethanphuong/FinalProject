@@ -13,10 +13,13 @@ class Recipe : Page {
     fun Recipe(__title:String){ title = __title }
     fun addTag(tag:String){ tags.add(tag) }
     fun removeTag(tag:String){ tags.remove(tag) }
+    fun returnTags(): ArrayList<String>{ return tags }
     fun addIngredients(ingredient:String){ ingredients.add(ingredient) }
     fun removeIngredients(ingredient:String){ ingredients.remove(ingredient) }
+    fun returnIngredients(): ArrayList<String>{ return ingredients }
     fun addInstruction(instruction:String){ instructions.add(instruction) }
     fun removeInstruction(instruction:String){ instructions.remove(instruction) }
+    fun returnInstructions(): ArrayList<String>{ return instructions }
 }
 
 class Category : Page {
