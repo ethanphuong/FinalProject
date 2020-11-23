@@ -10,11 +10,12 @@
         android:id="@+id/addRecipeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="27dp"
         android:layout_marginRight="27dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="goToAddRecipePage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
@@ -38,8 +39,8 @@
                 android:id="@+id/breakfastTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/breakfast"
                 android:textSize="24sp" />
@@ -67,8 +68,8 @@
                 android:id="@+id/lunchTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/lunch"
                 android:textSize="24sp" />
@@ -96,8 +97,8 @@
                 android:id="@+id/dinnerTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/dinner"
                 android:textSize="24sp" />
@@ -125,8 +126,8 @@
                 android:id="@+id/dessertTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/dessert"
                 android:textSize="24sp" />
