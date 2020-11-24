@@ -19,7 +19,7 @@ class TagCompileStrategy : CompileStrategy {
         tagInput = tagInput.toLowerCase()
 
         //iterate through each page in the cookbook to grab information
-        while (page != null) {
+        while (page.hasNext()) {
             //check if page is a recipe
             if (page is Recipe) {
 
@@ -61,7 +61,7 @@ class TitleCompileStrategy : CompileStrategy {
         titleInput = titleInput.toLowerCase();
 
         //iterate through each page in the cookbook to grab information
-        while (page != null) {
+        while (page.hasNext()) {
             //check if page is a recipe
             if (page is Recipe) {
 
@@ -94,7 +94,7 @@ class IngredientsCompileStrategy : CompileStrategy {
         ingredientInput = ingredientInput.toLowerCase()
 
         //iterate through each page in the cookbook to grab information
-        while (page != null) {
+        while (page.hasNext()) {
             //check if page is a recipe
             if (page is Recipe) {
 
