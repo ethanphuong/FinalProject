@@ -98,24 +98,25 @@ class IngredientsCompileStrategy : CompileStrategy {
             //check if page is a recipe
             if (page is Recipe) {
 
-            //get size of recipe's ingredientsList
-            var ingredientsListCount: Int = page.returnIngredientsCount();
+                //get size of recipe's ingredientsList
+                var ingredientsListCount: Int = page.returnIngredientsCount();
 
-            //iterate through each ingredients in the recipe
-            for (i in 0 until ingredientsListCount) {
-                //get ingredient at an index
-                var ingredient: String = page.returnIngredient(i)
+                //iterate through each ingredients in the recipe
+                for (i in 0 until ingredientsListCount) {
+                    //get ingredient at an index
+                    var ingredient: String = page.returnIngredient(i)
 
-                //to lower ingredient string
-                ingredient = ingredient.toLowerCase()
+                    //to lower ingredient string
+                    ingredient = ingredient.toLowerCase()
 
-                //compare recipe's ingredients to user's input
-                if (ingredient == ingredientInput) {
-                    ingredientRecipeList.add(page)
+                    //compare recipe's ingredients to user's input
+                    if (ingredient == ingredientInput) {
+                        ingredientRecipeList.add(page)
+                    }
                 }
-            }
 
-            page.getNext();
+                page.getNext();
+            }
         }
     }
 }
