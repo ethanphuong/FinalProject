@@ -13,16 +13,16 @@ class Recipe(override var title: String) : Page(title) {
     fun addTag(tag:String) { tags.add(tag) }
     fun removeTag(tag:String) { tags.remove(tag) }
     fun returnTag(loc: Int): String { return tags.get(loc) }
-    fun returnTagsListCount(): Int { return tags.count() }
+    fun returnTagsCount(): Int { return tags.count() }
 
-    fun addIngredients(ingredient:String) { ingredients.add(ingredient) }
-    fun removeIngredients(ingredient:String) { ingredients.remove(ingredient) }
-    fun returnIngredients(loc: Int): String { return ingredients.get(loc) }
+    fun addIngredient(ingredient:String) { ingredients.add(ingredient) }
+    fun removeIngredient(ingredient:String) { ingredients.remove(ingredient) }
+    fun returnIngredient(loc: Int): String { return ingredients.get(loc) }
     fun returnIngredientsCount(): Int { return ingredients.count() }
 
     fun addInstruction(instruction:String) { instructions.add(instruction) }
     fun removeInstruction(instruction:String) { instructions.remove(instruction) }
-    fun returnInstructions(loc: Int): String { return instructions.get(loc) }
+    fun returnInstruction(loc: Int): String { return instructions.get(loc) }
     fun returnInstructionsCount(): Int { return instructions.count() }
 }
 
@@ -32,5 +32,5 @@ class Category(override var title: String) : Page(title) {
     fun addRecipe(__recipe:Page) { pages.add(__recipe) }
     fun removeRecipe(__recipe:Page) { pages.remove(__recipe) }
     fun returnPage(loc: Int): Page { return pages.get(loc) }
-    fun returnPageCount(): Int { return pages.count() }
+    fun returnPagesCount(): Int { return pages.count() }
 }
