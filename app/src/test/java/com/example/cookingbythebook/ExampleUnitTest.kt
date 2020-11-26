@@ -2,6 +2,7 @@ package com.example.cookingbythebook
 
 import com.example.cookingbythebook.compositepackage.Page
 import com.example.cookingbythebook.compositepackage.Recipe
+import com.example.cookingbythebook.cookbookpackage.CookBook
 import org.junit.Test
 
 import org.junit.Assert.*
