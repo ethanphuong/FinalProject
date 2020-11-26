@@ -22,6 +22,7 @@ class TagCompileStrategy() : CompileStrategy() {
 
         //create iterator (return a page)
         var it: CookBookIterator = CookBookIterator(cookbook)
+        
         //iterate through each page in the cookbook to grab information
         while (it.hasNext()) {
             //check if page is a recipe
