@@ -6,9 +6,9 @@ open class Page(protected open var title: String) {
 }
 
 class Recipe(override var title: String) : Page(title) {
-    var tags = ArrayList<String>()
-    var ingredients = ArrayList<String>()
-    var instructions = ArrayList<String>()
+    private var tags = ArrayList<String>()
+    private var ingredients = ArrayList<String>()
+    private var instructions = ArrayList<String>()
 
     fun addTag(tag:String) { tags.add(tag) }
     fun removeTag(tag:String) { tags.remove(tag) }
@@ -27,7 +27,7 @@ class Recipe(override var title: String) : Page(title) {
 }
 
 class Category(override var title: String) : Page(title) {
-    var pages = ArrayList<Page>()
+    private var pages = ArrayList<Page>()
 
     fun addPage(__page:Page) { pages.add(__page) }
     fun removePage(__page:Page) { pages.remove(__page) }
