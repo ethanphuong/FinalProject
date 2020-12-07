@@ -2,14 +2,16 @@ package com.example.cookingbythebook.cookbookpackage
 
 import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
+import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.strategypackage.CompileStrategy
 
 interface Book {
     var titlePage: Page?
     var compiler: CompileStrategy?
     fun addPage(categoryName: String, page: Page)
-    fun setListCompiler(_compiler: Compiler)
+    fun setListCompiler(_compiler: CompileStrategy)
     fun compile(searchInput: String)
+    fun createIterator(): Iterator
 }
 
 class CookBook: Book{
@@ -22,11 +24,9 @@ class CookBook: Book{
 
     override fun addPage(categoryName: String, page: Page) {
         if (titlePage != null) {
-            if (titlePage is Category) {
-                var _titlePage = titlePage as Category
-                if (_titlePage.returnTitle() == categoryName) {
-                    _titlePage.addRecipe(page)
-                }
+            var it: CookBookIterator = CookBookIterator(titlePage)
+            if (it is Category && it.returnTitle() == categoryName) {
+                it.addPage(page)
             }
         }
     }
@@ -37,7 +37,7 @@ class CookBook: Book{
 
     override fun compile(searchInput: String) {
         if (compiler != null) {
-            var it: CookBookIterator = CookBookIterator(this)
+            var it: CookBookIterator = CookBookIterator(titlePage)
             if (it.hasNext()) {
                 compiler!!.compileList(it, searchInput)
             }
@@ -46,4 +46,5 @@ class CookBook: Book{
             throw IllegalArgumentException("List compiler required")
         }
     }
+
 }
