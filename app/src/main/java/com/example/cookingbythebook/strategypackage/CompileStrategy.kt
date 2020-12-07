@@ -5,12 +5,12 @@ import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.cookbookpackage.CookBook
 
 open class CompileStrategy() {
-    open fun compileList(cookbook: CookBook, input: String) {}
+    open fun compileList(titlePage: Page, input: String) {}
 }
 
 class TagCompileStrategy() : CompileStrategy() {
 
-    override fun compileList(cookbook: CookBook, _tagInput: String) {
+    override fun compileList(titlePage: Page, _tagInput: String) {
         //create a new list with the user's input for tags
         var tagRecipeList = ArrayList<Page>();
 
@@ -21,26 +21,27 @@ class TagCompileStrategy() : CompileStrategy() {
         tagInput = tagInput.toLowerCase()
 
         //create iterator (return a page)
-        var it: CookBookIterator = CookBookIterator(cookbook)
+        var it: CookBookIterator = CookBookIterator(titlePage)
+        
         //iterate through each page in the cookbook to grab information
         while (it.hasNext()) {
             //check if page is a recipe
-            if (it is Recipe) {
+            if (it.current() is Recipe) {
 
                 //get size of recipe's tagsList
-                val tagsListCount: Int = it.returnTagsCount();
+                val tagsListCount: Int = it.current().returnTagsCount();
 
                 //iterate through tag vector in a recipe page
                 for (i in 0 until tagsListCount) {
                     // get tag at an index
-                    var tag: String = it.returnTag(i)
+                    var tag: String = it.current().returnTag(i)
 
                     //to lower tag string
                     tag = tag.toLowerCase()
 
                     //compare recipe's tag to user's input
                     if (tag == tagInput) {
-                        tagRecipeList.add(it)
+                        tagRecipeList.add(it.current())
                     }
                 }
             }
@@ -51,7 +52,7 @@ class TagCompileStrategy() : CompileStrategy() {
 }
 
 class TitleCompileStrategy() : CompileStrategy() {
-    override fun compileList(cookbook: CookBook, _titleInput: String) {
+    override fun compileList(titlePage: Page, _titleInput: String) {
         //create a new list with the user's input for title
         var titleRecipeList = ArrayList<Page>();
 
@@ -65,7 +66,7 @@ class TitleCompileStrategy() : CompileStrategy() {
         titleInput = titleInput.toLowerCase();
 
         //create iterator
-        var it: CookBookIterator = CookBookIterator(cookbook)
+        var it: CookBookIterator = CookBookIterator(titlePage)
 
         //iterate through each page in the cookbook to grab information
         while (it.hasNext()) {
@@ -90,7 +91,7 @@ class TitleCompileStrategy() : CompileStrategy() {
 }
 
 class IngredientsCompileStrategy() : CompileStrategy() {
-    override fun compileList(cookbook: CookBook, _ingredientInput: String) {
+    override fun compileList(titlePage: Page, _ingredientInput: String) {
         //create a new list with the user's input for ingredients
         var ingredientRecipeList = ArrayList<Page>();
 
@@ -101,12 +102,12 @@ class IngredientsCompileStrategy() : CompileStrategy() {
         ingredientInput = ingredientInput.toLowerCase()
 
         //create iterator
-        var it: CookBookIterator = CookBookIterator()
+        var it: CookBookIterator = CookBookIterator(titlePage)
 
         //iterate through each page in the cookbook to grab information
         while (it.hasNext()) {
             //check if page is a recipe
-            if (it is Recipe) {
+            if (it.current() is Recipe) {
 
                 //get size of recipe's ingredientsList
                 var ingredientsListCount: Int = it.returnIngredientsCount();
@@ -114,14 +115,14 @@ class IngredientsCompileStrategy() : CompileStrategy() {
                 //iterate through each ingredients in the recipe
                 for (i in 0 until ingredientsListCount) {
                     //get ingredient at an index
-                    var ingredient: String = it.returnIngredient(i)
+                    var ingredient: String = it.current().returnIngredient(i)
 
                     //to lower ingredient string
                     ingredient = ingredient.toLowerCase()
 
                     //compare recipe's ingredients to user's input
                     if (ingredient == ingredientInput) {
-                        ingredientRecipeList.add(it)
+                        ingredientRecipeList.add(it.current())
                     }
                 }
 
