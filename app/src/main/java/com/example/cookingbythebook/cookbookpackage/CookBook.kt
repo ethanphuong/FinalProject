@@ -10,7 +10,7 @@ interface Book {
     var compiler: CompileStrategy?
     fun addPage(categoryName: String, page: Page)
     fun setListCompiler(_compiler: CompileStrategy)
-    fun compile(searchInput: String)
+    fun compile(searchInput: String): ArrayList<Page>
     fun createIterator(): Iterator
 }
 
@@ -35,11 +35,12 @@ class CookBook: Book{
         compiler = _compiler
     }
 
-    override fun compile(searchInput: String) {
+    override fun compile(searchInput: String): ArrayList<Page> {
         if (compiler != null) {
             var it: CookBookIterator = CookBookIterator(titlePage)
             if (it.hasNext()) {
-                compiler!!.compileList(it, searchInput)
+                var compiledList: ArrayList<Page> = ArrayList<Page>()
+                compiledList = compiler!!.compileList(it, searchInput)
             }
         }
         else {

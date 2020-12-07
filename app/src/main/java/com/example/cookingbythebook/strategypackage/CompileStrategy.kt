@@ -5,12 +5,12 @@ import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.cookbookpackage.CookBook
 
 open class CompileStrategy() {
-    open fun compileList(titlePage: Page, input: String) {}
+    open fun compileList(titlePage: Page, input: String): ArrayList<Page> {return ArrayList<Page>()}
 }
 
 class TagCompileStrategy() : CompileStrategy() {
 
-    override fun compileList(titlePage: Page, _tagInput: String) {
+    override fun compileList(titlePage: Page, _tagInput: String): ArrayList<Page> {
         //create a new list with the user's input for tags
         var tagRecipeList = ArrayList<Page>();
 
@@ -48,11 +48,13 @@ class TagCompileStrategy() : CompileStrategy() {
 
             it.getNext(); //get next page
         }
+
+        return tagRecipeList
     }
 }
 
 class TitleCompileStrategy() : CompileStrategy() {
-    override fun compileList(titlePage: Page, _titleInput: String) {
+    override fun compileList(titlePage: Page, _titleInput: String): ArrayList<Page> {
         //create a new list with the user's input for title
         var titleRecipeList = ArrayList<Page>();
 
@@ -87,11 +89,13 @@ class TitleCompileStrategy() : CompileStrategy() {
 
             it.getNext(); //get next page
         }
+
+        return titleRecipeList
     }
 }
 
 class IngredientsCompileStrategy() : CompileStrategy() {
-    override fun compileList(titlePage: Page, _ingredientInput: String) {
+    override fun compileList(titlePage: Page, _ingredientInput: String): ArrayList<Page> {
         //create a new list with the user's input for ingredients
         var ingredientRecipeList = ArrayList<Page>();
 
@@ -129,5 +133,7 @@ class IngredientsCompileStrategy() : CompileStrategy() {
                 it.getNext();
             }
         }
+
+        return ingredientRecipeList
     }
 }
