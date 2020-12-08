@@ -17,6 +17,31 @@ class CompositeUnitTest {
     fun addition_isCorrect() { //example unit test
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun test_all(){
+        test_recipe()
+        test_category()
+    }
+
+    @Test
+    fun test_recipe(){
+        recipe_title_isCorrect()
+        recipe_tags_number_isCorrect()
+        recipe_tags_return_isCorrect()
+        recipe_ingredients_number_isCorrect()
+        recipe_ingredients_return_isCorrect()
+        recipe_instructions_number_isCorrect()
+        recipe_instructions_return_isCorrect()
+    }
+
+    @Test
+    fun test_category(){
+        category_title_isCorrect()
+        category_returnPagesCount_isCorrect()
+        category_returnPages_isCorrect()
+    }
+
     @Test
     fun recipe_title_isCorrect() {
         var testTitle: String = "Pizza"
@@ -76,6 +101,49 @@ class CompositeUnitTest {
         assertEquals(testRecipe.returnTag(0), "Italian")
         testRecipe.removeTag("Italian")
         assertEquals(testRecipe.returnTagsCount(), 0)
+    }
+
+    @Test
+    fun recipe_ingredients_number_isCorrect(){
+        var sushi: Recipe = Recipe("Sushi")
+        assertEquals(sushi.returnIngredientsCount(), 0)
+
+        sushi.addIngredient("Rice")
+        assertEquals(sushi.returnIngredientsCount(), 1)
+        sushi.addIngredient("Seaweed")
+        assertEquals(sushi.returnIngredientsCount(), 2)
+        sushi.addIngredient("Fish")
+        assertEquals(sushi.returnIngredientsCount(), 3)
+
+        sushi.removeIngredient("Seaweed")
+        assertEquals(sushi.returnIngredientsCount(), 2)
+        sushi.removeIngredient("Rice")
+        assertEquals(sushi.returnIngredientsCount(), 1)
+        sushi.removeIngredient("Fish")
+        assertEquals(sushi.returnIngredientsCount(), 0)
+    }
+
+    @Test
+    fun recipe_ingredients_return_isCorrect(){
+        var sushi: Recipe = Recipe("Sushi")
+        assertEquals(sushi.returnIngredientsCount(), 0)
+
+        sushi.addIngredient("Rice")
+        assertEquals(sushi.returnIngredient(0), "Rice")
+        sushi.addIngredient("Seaweed")
+        assertEquals(sushi.returnIngredient(0), "Rice")
+        assertEquals(sushi.returnIngredient(1), "Seaweed")
+        sushi.addIngredient("Fish")
+        assertEquals(sushi.returnIngredient(0), "Rice")
+        assertEquals(sushi.returnIngredient(1), "Seaweed")
+        assertEquals(sushi.returnIngredient(2), "Fish")
+
+        sushi.removeIngredient("Seaweed")
+        assertEquals(sushi.returnIngredient(0), "Rice")
+        assertEquals(sushi.returnIngredient(1), "Fish")
+        sushi.removeIngredient("Rice")
+        assertEquals(sushi.returnIngredient(0), "Fish")
+        sushi.removeIngredient("Fish")
     }
 
     @Test
@@ -180,5 +248,64 @@ class CompositeUnitTest {
 
         var testCategory: Category = testPage as Category
         assertEquals(testCategory.returnTitle(), testTitle)
+    }
+
+    @Test
+    fun category_returnPagesCount_isCorrect() {
+        var testTitle: String = "Dinner"
+        var testPage: Page = Category(testTitle)
+
+        var testCategory: Category = testPage as Category
+        assertEquals(testCategory.returnPagesCount(), 0)
+
+        var testPage2: Page = Recipe("Ramen")
+        var ramen: Recipe = testPage2 as Recipe
+        testCategory.addPage(ramen)
+        assertEquals(testCategory.returnPagesCount(), 1)
+
+        var beefTongue: Recipe = Recipe("Beef tongue")
+        testCategory.addPage(beefTongue)
+        assertEquals(testCategory.returnPagesCount(), 2)
+
+        var friedRice: Recipe = Recipe("Fried Rice")
+        testCategory.addPage(friedRice)
+        assertEquals(testCategory.returnPagesCount(), 3)
+
+        testCategory.removePage(beefTongue)
+        assertEquals(testCategory.returnPagesCount(), 2)
+        testCategory.removePage(ramen)
+        assertEquals(testCategory.returnPagesCount(), 1)
+        testCategory.removePage(friedRice)
+        assertEquals(testCategory.returnPagesCount(), 0)
+    }
+
+    @Test
+    fun category_returnPages_isCorrect() {
+        var testCategory: Category = Category("Dinner")
+
+
+        var ramen: Recipe = Recipe("Ramen")
+        testCategory.addPage(ramen)
+        assertEquals(testCategory.returnPage(0), ramen)
+
+        var beefTongue: Recipe = Recipe("Beef tongue")
+        testCategory.addPage(beefTongue)
+        assertEquals(testCategory.returnPage(0), ramen)
+        assertEquals(testCategory.returnPage(1), beefTongue)
+
+        var friedRice: Recipe = Recipe("Fried Rice")
+        testCategory.addPage(friedRice)
+        assertEquals(testCategory.returnPage(0), ramen)
+        assertEquals(testCategory.returnPage(1), beefTongue)
+        assertEquals(testCategory.returnPage(2), friedRice)
+
+
+        testCategory.removePage(beefTongue)
+        assertEquals(testCategory.returnPage(0), ramen)
+        assertEquals(testCategory.returnPage(1), friedRice)
+
+        testCategory.removePage(ramen)
+        assertEquals(testCategory.returnPage(0), friedRice)
+        testCategory.removePage(friedRice)
     }
 }
