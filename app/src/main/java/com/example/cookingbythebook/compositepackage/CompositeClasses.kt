@@ -1,32 +1,36 @@
 package com.example.cookingbythebook.compositepackage
 
-interface Page {
-    abstract var title: String
+open class Page(protected open var title: String) {
+    fun returnTitle(): String { return title }
+    fun changeTitle(__title: String) { title = __title }
 }
 
-class Recipe : Page {
-    override var title: String = ""
+class Recipe(override var title: String) : Page(title) {
     var tags = ArrayList<String>()
     var ingredients = ArrayList<String>()
     var instructions = ArrayList<String>()
 
-    fun Recipe(__title:String){ title = __title }
-    fun addTag(tag:String){ tags.add(tag) }
-    fun removeTag(tag:String){ tags.remove(tag) }
-    fun returnTags(): ArrayList<String>{ return tags }
-    fun addIngredients(ingredient:String){ ingredients.add(ingredient) }
-    fun removeIngredients(ingredient:String){ ingredients.remove(ingredient) }
-    fun returnIngredients(): ArrayList<String>{ return ingredients }
-    fun addInstruction(instruction:String){ instructions.add(instruction) }
-    fun removeInstruction(instruction:String){ instructions.remove(instruction) }
-    fun returnInstructions(): ArrayList<String>{ return instructions }
+    fun addTag(tag:String) { tags.add(tag) }
+    fun removeTag(tag:String) { tags.remove(tag) }
+    fun returnTag(loc: Int): String { return tags.get(loc) }
+    fun returnTagsCount(): Int { return tags.count() }
+
+    fun addIngredient(ingredient:String) { ingredients.add(ingredient) }
+    fun removeIngredient(ingredient:String) { ingredients.remove(ingredient) }
+    fun returnIngredient(loc: Int): String { return ingredients.get(loc) }
+    fun returnIngredientsCount(): Int { return ingredients.count() }
+
+    fun addInstruction(instruction:String) { instructions.add(instruction) }
+    fun removeInstruction(instruction:String) { instructions.remove(instruction) }
+    fun returnInstruction(loc: Int): String { return instructions.get(loc) }
+    fun returnInstructionsCount(): Int { return instructions.count() }
 }
 
-class Category : Page {
-    override var title: String = ""
+class Category(override var title: String) : Page(title) {
     var pages = ArrayList<Page>()
 
-    fun Category(__title:String){ title = __title }
-    fun addRecipe(__recipe:Page){ pages.add(__recipe) }
-    fun removeRecipe(__recipe:Page){ pages.remove(__recipe) }
+    fun addRecipe(__recipe:Page) { pages.add(__recipe) }
+    fun removeRecipe(__recipe:Page) { pages.remove(__recipe) }
+    fun returnPage(loc: Int): Page { return pages.get(loc) }
+    fun returnPagesCount(): Int { return pages.count() }
 }
