@@ -12,7 +12,7 @@ class TagCompileStrategy() : CompileStrategy() {
 
     override fun compileList(titlePage: Page?, _tagInput: String): ArrayList<Page> {
         //create a new list with the user's input for tags
-        var tagRecipeList = ArrayList<Page>();
+        var tagRecipeList = ArrayList<Page>()
 
         //initialize temporary tagInput
         var tagInput: String = _tagInput
@@ -56,16 +56,16 @@ class TagCompileStrategy() : CompileStrategy() {
 class TitleCompileStrategy() : CompileStrategy() {
     override fun compileList(titlePage: Page?, _titleInput: String): ArrayList<Page> {
         //create a new list with the user's input for title
-        var titleRecipeList = ArrayList<Page>();
+        var titleRecipeList = ArrayList<Page>()
 
         //initialize temporary titleInput
-        var titleInput = _titleInput;
+        var titleInput = _titleInput
 
         //length of titleInput string
         var titleInputLength: Int = titleInput.count();
 
         //to lower titleInput
-        titleInput = titleInput.toLowerCase();
+        titleInput = titleInput.toLowerCase()
 
         //create iterator
         var it = PreorderIterator(titlePage)
@@ -76,14 +76,14 @@ class TitleCompileStrategy() : CompileStrategy() {
             if (it.getCurrent() is Recipe) {
 
                 //page's recipe's title
-                var title: String = it.getCurrent().returnTitle();
+                var title: String = it.getCurrent().returnTitle()
 
                 //to lower title
-                title = title.toLowerCase();
+                title = title.toLowerCase()
 
                 //compare recipe's title to user's input
                 if (title.contains(titleInput)) {
-                    titleRecipeList.add(it.getCurrent());
+                    titleRecipeList.add(it.getCurrent())
                 }
             }
 
@@ -97,7 +97,7 @@ class TitleCompileStrategy() : CompileStrategy() {
 class IngredientsCompileStrategy() : CompileStrategy() {
     override fun compileList(titlePage: Page?, _ingredientInput: String): ArrayList<Page> {
         //create a new list with the user's input for ingredients
-        var ingredientRecipeList = ArrayList<Page>();
+        var ingredientRecipeList = ArrayList<Page>()
 
         //initialize temporary ingredient
         var ingredientInput: String = _ingredientInput
