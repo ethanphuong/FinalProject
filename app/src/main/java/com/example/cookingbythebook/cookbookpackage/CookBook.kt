@@ -11,7 +11,6 @@ interface Book {
     fun addPage(categoryName: String, page: Page)
     fun setListCompiler(_compiler: CompileStrategy)
     fun compile(searchInput: String): ArrayList<Page>
-    fun createIterator(): Iterator
 }
 
 class CookBook: Book{
@@ -23,10 +22,31 @@ class CookBook: Book{
     }
 
     override fun addPage(categoryName: String, page: Page) {
+        //to lower category name
+        if (categoryName == "") {
+            if (titlePage is Category) {
+                (titlePage as Category).addPage(page)
+                return
+            }
+        }
+
+        var _categoryName: String = categoryName
+        _categoryName.toLowerCase()
+
         if (titlePage != null) {
-            var it: CookBookIterator = CookBookIterator(titlePage)
-            if (it is Category && it.returnTitle() == categoryName) {
-                it.addPage(page)
+            var it = PreorderIterator(titlePage)
+
+            it.first()
+            while (!it.isDone()) {
+                // to lower page's title
+                var _pageTitle: String = it.getCurrent().returnTitle()
+                _pageTitle.toLowerCase()
+
+                if (it.getCurrent() is Category && _pageTitle == _categoryName) {
+                    it.getCurrent().addPage(page)
+                    return
+                }
+                it.getNext()
             }
         }
     }
@@ -37,10 +57,10 @@ class CookBook: Book{
 
     override fun compile(searchInput: String): ArrayList<Page> {
         if (compiler != null) {
-            var it: CookBookIterator = CookBookIterator(titlePage)
-            if (it.hasNext()) {
+            var it = PreorderIterator(titlePage)
+            if (it.isDone()) {
                 var compiledList: ArrayList<Page> = ArrayList<Page>()
-                compiledList = compiler!!.compileList(it, searchInput)
+                compiledList = compiler!!.compileList(titlePage, searchInput)
             }
         }
         else {

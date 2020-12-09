@@ -3,6 +3,8 @@ package com.example.cookingbythebook.compositepackage
 open class Page(protected open var title: String) {
     fun returnTitle(): String { return title }
     fun changeTitle(__title: String) { title = __title }
+
+    }
 }
 
 class Recipe(override var title: String) : Page(title) {
@@ -29,8 +31,8 @@ class Recipe(override var title: String) : Page(title) {
 class Category(override var title: String) : Page(title) {
     var pages = ArrayList<Page>()
 
-    fun addRecipe(__recipe:Page) { pages.add(__recipe) }
-    fun removeRecipe(__recipe:Page) { pages.remove(__recipe) }
+    fun addPage(__recipe:Page) { pages.add(__recipe) }
+    fun removePage(__recipe:Page) { pages.remove(__recipe) }
     fun returnPage(loc: Int): Page { return pages.get(loc) }
     fun returnPagesCount(): Int { return pages.count() }
 }

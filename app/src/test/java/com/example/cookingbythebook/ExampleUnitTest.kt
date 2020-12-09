@@ -1,5 +1,6 @@
 package com.example.cookingbythebook
 
+import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
 import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.cookbookpackage.CookBook
@@ -40,17 +41,32 @@ fun change_page_title() {
 }
 @Test
 fun title_compile_list() {
-    var cookBook: CookBook = CookBook("Vy's Cook Book")
-    var page1: Recipe = Recipe("Chocolate Cake")
-    var page2: Recipe = Recipe("Red Velvet Cake")
-    var page3: Recipe = Recipe("Brownie")
-    var page4: Recipe = Recipe("Cheesecake")
-    var page5: Recipe = Recipe("Mochi Donuts")
-    var page6: Recipe = Recipe("Glazed Donuts")
-    var page7: Recipe = Recipe("Tiramisu Cake")
-    var page8: Recipe = Recipe ("Vanilla Latte")
-    var page9: Recipe = Recipe("Chocolate Ice Cream")
-    var page10: Recipe = Recipe("Vanilla Ice Cream")
+    var cookBook = CookBook("Vy's Cook Book")
+    var page1 = Recipe("Chocolate Cake")
+    var page2 = Recipe("Red Velvet Cake")
+    var page3 = Recipe("Brownie")
+    var page4 = Recipe("Cheesecake")
+    var page5 = Recipe("Mochi Donuts")
+    var page6 = Recipe("Glazed Donuts")
+    var page7 = Recipe("Tiramisu Cake")
+    var page8 = Recipe ("Vanilla Latte")
+    var page9 = Recipe("Chocolate Ice Cream")
+    var page10 = Recipe("Vanilla Ice Cream")
+
+    //add pages to cookbook
+    var categoryName: String = "Dessert"
+    var categoryPage = Category(categoryName)
+    cookBook.addPage("", categoryPage)
+    cookBook.addPage(categoryName, page1)
+    cookBook.addPage(categoryName, page2)
+    cookBook.addPage(categoryName, page3)
+    cookBook.addPage(categoryName, page4)
+    cookBook.addPage(categoryName, page5)
+    cookBook.addPage(categoryName, page6)
+    cookBook.addPage(categoryName, page7)
+    cookBook.addPage(categoryName, page8)
+    cookBook.addPage(categoryName, page9)
+    cookBook.addPage(categoryName, page10)
 
     var titleStrategy: CompileStrategy = TitleCompileStrategy()
     cookBook.setListCompiler(titleStrategy)
@@ -68,51 +84,76 @@ fun title_compile_list() {
 fun tag_compile_list() {
     var cookBook: CookBook = CookBook("Vy's Cook Book")
 
-    var page1: Recipe = Recipe("Supreme Pizza")
+    var page1 = Recipe("Supreme Pizza")
     page1.addTag("Italian")
     page1.addTag("cheesy")
 
-    var page2: Recipe = Recipe("Red Velvet Cake")
+    var page2 = Recipe("Red Velvet Cake")
     page2.addTag("dessert")
     page2.addTag("cake")
 
-    var page3: Recipe = Recipe("Spaghetti")
+    var page3 = Recipe("Spaghetti")
     page3.addTag("Italian")
     page3.addTag("pasta")
 
-    var page4: Recipe = Recipe("Macaroni and Cheese")
+    var page4 = Recipe("Macaroni and Cheese")
     page4.addTag("pasta")
     page4.addTag("cheesy")
 
-    var page5: Recipe = Recipe("Mochi Donuts")
+    var page5 = Recipe("Mochi Donuts")
     page5.addTag("dessert")
     page5.addTag("donuts")
 
-    var page6: Recipe = Recipe("Iced Americano")
+    var page6 = Recipe("Iced Americano")
     page6.addTag("coffee")
     page6.addTag("drinks")
 
-    var page7: Recipe = Recipe("Lasagna")
+    var page7 = Recipe("Lasagna")
     page7.addTag("Italian")
     page7.addTag("pasta")
     page7.addTag("cheesy")
 
-    var page8: Recipe = Recipe ("Vanilla Latte")
+    var page8 = Recipe ("Vanilla Latte")
     page8.addTag("drinks")
     page8.addTag("coffee")
 
-    var page9: Recipe = Recipe("Cheese Foam Green Tea")
+    var page9 = Recipe("Cheese Foam Green Tea")
     page9.addTag("drinks")
     page9.addTag("cheesy")
     page9.addTag("tea")
 
-    var page10: Recipe = Recipe("Caramel Macchiato")
+    var page10 = Recipe("Caramel Macchiato")
     page10.addTag("coffee")
     page10.addTag("drinks")
 
-    var page11: Recipe = Recipe("Cheesecake")
+    var page11 = Recipe("Cheesecake")
     page11.addTag("dessert")
     page11.addTag("cheesy")
+
+    var categoryName1: String = "Dessert"
+    var categoryPage1 = Category(categoryName1)
+
+    var categoryName2: String = "Beverages"
+    var categoryPage2 = Category(categoryName2)
+
+    var categoryName3: String = "Dinner"
+    var categoryPage3 = Category(categoryName3)
+
+    cookBook.addPage("", categoryPage1)
+    cookBook.addPage("", categoryPage2)
+    cookBook.addPage("", categoryPage3)
+
+    cookBook.addPage(categoryName3, page1)
+    cookBook.addPage(categoryName1, page2)
+    cookBook.addPage(categoryName3, page3)
+    cookBook.addPage(categoryName3, page4)
+    cookBook.addPage(categoryName1, page5)
+    cookBook.addPage(categoryName2, page6)
+    cookBook.addPage(categoryName3, page7)
+    cookBook.addPage(categoryName2, page8)
+    cookBook.addPage(categoryName2, page9)
+    cookBook.addPage(categoryName2, page10)
+    cookBook.addPage(categoryName1, page11)
 
     var tagStrategy: CompileStrategy = TagCompileStrategy()
     cookBook.setListCompiler(tagStrategy)
@@ -130,59 +171,68 @@ fun tag_compile_list() {
 fun ingredient_compile_list() {
     var cookBook: CookBook = CookBook("Vy's Cook Book")
 
-    var page1: Page = Recipe("Supreme Pizza")
-    var recipe1: Recipe = page1 as Recipe
-    recipe1.addIngredient("dough")
-    recipe1.addIngredient("tomato")
-    recipe1.addIngredient("cheese")
-    recipe1.addIngredient("bell pepper")
-    recipe1.addIngredient("olive")
-    recipe1.addIngredient("sausages")
-    recipe1.addIngredient("pepperoni")
+    var page1 = Recipe("Supreme Pizza")
+    page1.addIngredient("dough")
+    page1.addIngredient("tomato")
+    page1.addIngredient("cheese")
+    page1.addIngredient("bell pepper")
+    page1.addIngredient("olive")
+    page1.addIngredient("sausages")
+    page1.addIngredient("pepperoni")
 
-    var page2: Page = Recipe("Red Velvet Cake")
-    var recipe2: Recipe = page2 as Recipe
-    recipe2.addIngredient("eggs")
-    recipe2.addIngredient("flour")
-    recipe2.addIngredient("baking soda")
-    recipe2.addIngredient("cocoa powder")
-    recipe2.addIngredient("sugar")
+    var page2 = Recipe("Red Velvet Cake")
+    page2.addIngredient("eggs")
+    page2.addIngredient("flour")
+    page2.addIngredient("baking soda")
+    page2.addIngredient("cocoa powder")
+    page2.addIngredient("sugar")
 
-    var page3: Page = Recipe("Spaghetti")
-    var recipe3: Recipe = page3 as Recipe
-    recipe3.addIngredient("noodles")
-    recipe3.addIngredient("tomato")
-    recipe3.addIngredient("sausage")
-    recipe3.addIngredient("meatball")
+    var page3: Recipe = Recipe("Spaghetti")
+    page3.addIngredient("noodles")
+    page3.addIngredient("tomato")
+    page3.addIngredient("sausage")
+    page3.addIngredient("meatball")
 
-    var page4: Page = Recipe("Macaroni and Cheese")
-    var recipe4: Recipe = page4 as Recipe
-    recipe4.addIngredient("macaroni")
-    recipe4.addIngredient("cheese")
-    recipe3.addIngredient("salt")
+    var page4 = Recipe("Macaroni and Cheese")
+    page4.addIngredient("macaroni")
+    page4.addIngredient("cheese")
+    page3.addIngredient("salt")
 
-    var page5: Page = Recipe("Mochi Donuts")
-    var recipe5: Recipe = page5 as Recipe
-    recipe5.addIngredient("rice flour")
-    recipe5.addIngredient("sugar")
-    recipe5.addIngredient("tofu")
-    recipe5.addIngredient("milk")
-    recipe5.addIngredient("eggs")
+    var page5 = Recipe("Mochi Donuts")
+    page5.addIngredient("rice flour")
+    page5.addIngredient("sugar")
+    page5.addIngredient("tofu")
+    page5.addIngredient("milk")
+    page5.addIngredient("eggs")
 
-    var page6: Page = Recipe("Lasagna")
-    var recipe6: Recipe = page6 as Recipe
-    recipe6.addIngredient("pasta")
-    recipe6.addIngredient("ground beef")
-    recipe6.addIngredient("cheese")
-    recipe6.addIngredient("tomato")
-    recipe6.addIngredient("cheese")
+    var page6 = Recipe("Lasagna")
+    page6.addIngredient("pasta")
+    page6.addIngredient("ground beef")
+    page6.addIngredient("cheese")
+    page6.addIngredient("tomato")
+    page6.addIngredient("cheese")
 
-    var page7: Page = Recipe("Ravioli")
-    var recipe7: Recipe = page7 as Recipe
-    recipe7.addIngredient("pasta")
-    recipe7.addIngredient("cheese")
-    recipe7.addIngredient("ground beef")
-    recipe7.addIngredient("tomato")
+    var page7 = Recipe("Ravioli")
+    page7.addIngredient("pasta")
+    page7.addIngredient("cheese")
+    page7.addIngredient("ground beef")
+    page7.addIngredient("tomato")
+
+    var categoryName1: String = "Dessert"
+    var categoryPage1 = Category(categoryName1)
+
+    var categoryName2: String = "Dinner"
+    var categoryPage2 = Category(categoryName2)
+
+    cookBook.addPage("", categoryPage1)
+    cookBook.addPage("", categoryPage2)
+    cookBook.addPage(categoryName2, page1)
+    cookBook.addPage(categoryName1, page2)
+    cookBook.addPage(categoryName2, page3)
+    cookBook.addPage(categoryName2, page4)
+    cookBook.addPage(categoryName1, page5)
+    cookBook.addPage(categoryName2, page6)
+    cookBook.addPage(categoryName2, page7)
 
     var ingredientStrategy: CompileStrategy = IngredientsCompileStrategy()
     cookBook.setListCompiler(ingredientStrategy)
