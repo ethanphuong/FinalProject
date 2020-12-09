@@ -4,4 +4,13 @@
     <string name="dinner">Dinner</string>
     <string name="breakfast">Breakfast</string>
     <string name="dessert">Dessert</string>
+    <string name="beverages">Beverages</string>
+    <string name="cookBookName">Username\'s Cook Book</string>
+    <string name="addRecipeButtonName">+</string>
+    <string name="editCategoryName">Category Name</string>
+    <string name="editRecipeName">Recipe Name</string>
+    <string name="editTags">Tags</string>
+    <string name="editIngredients">Ingredients</string>
+    <string name="editInstructions">Instructions</string>
+    <string name="addRecipeTitle">Add Recipe</string>
 </resources>
