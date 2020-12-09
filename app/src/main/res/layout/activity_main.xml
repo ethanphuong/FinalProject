@@ -12,6 +12,7 @@
         android:layout_height="60dp"
         android:background="@drawable/circle"
         android:fontFamily="@font/baloo"
+        android:gravity="center"
         android:onClick="goToAddRecipePage"
         android:text="@string/addRecipeButtonName"
         android:textColor="@color/red_brown"
