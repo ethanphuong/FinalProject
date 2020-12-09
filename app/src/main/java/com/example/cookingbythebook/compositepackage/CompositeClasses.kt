@@ -1,4 +1,5 @@
 package com.example.cookingbythebook.compositepackage
+//package com.example.cookingbythebook.iteratorpackage
 
 open class Page(protected open var title: String) {
     fun returnTitle(): String { return title }
@@ -24,6 +25,8 @@ class Recipe(override var title: String) : Page(title) {
     fun removeInstruction(instruction:String) { instructions.remove(instruction) }
     fun returnInstruction(loc: Int): String { return instructions[loc] }
     fun returnInstructionsCount(): Int { return instructions.count() }
+
+    //fun create_iterator(): Iterator { return NullIterator(this) }
 }
 
 class Category(override var title: String) : Page(title) {
@@ -33,4 +36,6 @@ class Category(override var title: String) : Page(title) {
     fun removePage(__page:Page) { pages.remove(__page) }
     fun returnPage(loc: Int): Page { return pages[loc] }
     fun returnPagesCount(): Int { return pages.count() }
+
+    //fun create_iterator(): Iterator { return BinaryIterator(this) }
 }
