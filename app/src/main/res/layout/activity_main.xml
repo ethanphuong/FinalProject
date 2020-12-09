@@ -6,22 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/addRecipeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="27dp"
-        android:layout_marginRight="27dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle"
+        android:fontFamily="@font/baloo"
         android:onClick="goToAddRecipePage"
+        android:text="@string/addRecipeButtonName"
+        android:textColor="@color/red_brown"
+        android:textSize="30sp"
+        app:backgroundTint="@color/melon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.928" />
 
     <ScrollView
-        android:id="@+id/mainScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,120 +40,120 @@
 
             <TextView
                 android:id="@+id/breakfastTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/breakfast"
-                android:textSize="24sp" />
-
-            <LinearLayout
-                android:id="@+id/breakfastLinearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:layout_height="60dp"
+                android:background="@color/tea_green"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
+                android:text="@string/breakfast"
+                android:textColor="@color/forest_green"
+                android:textSize="30sp" />
 
-                <ScrollView
-                    android:id="@+id/breakfastScollView"
+            <ScrollView
+                android:id="@+id/breakfastScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+                <LinearLayout
+                    android:id="@+id/breakfastLinearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
-            </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
 
             <TextView
                 android:id="@+id/lunchTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/tea_green"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
                 android:text="@string/lunch"
-                android:textSize="24sp" />
+                android:textColor="@color/forest_green"
+                android:textSize="30dp" />
 
-            <LinearLayout
-                android:id="@+id/lunchLinearLayout"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
+            <ScrollView
+                android:id="@+id/lunchScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
 
-                <ScrollView
-                    android:id="@+id/lunchScrollView"
+                <LinearLayout
+                    android:id="@+id/lunchLinearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
 
             <TextView
                 android:id="@+id/dinnerTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/tea_green"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
                 android:text="@string/dinner"
-                android:textSize="24sp" />
+                android:textColor="@color/forest_green"
+                android:textSize="30dp" />
 
-            <LinearLayout
-                android:id="@+id/dinnerLinearLayout"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
+            <ScrollView
+                android:id="@+id/dinnerScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
 
-                <ScrollView
-                    android:id="@+id/dinnerScollView"
+                <LinearLayout
+                    android:id="@+id/dinnerLinearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
 
             <TextView
                 android:id="@+id/dessertTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="60dp"
+                android:background="@color/tea_green"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
                 android:text="@string/dessert"
-                android:textSize="24sp" />
+                android:textColor="@color/forest_green"
+                android:textSize="30sp" />
 
-            <LinearLayout
-                android:id="@+id/dessertLinearLayout"
+            <ScrollView
+                android:id="@+id/dessertScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
+                android:layout_height="500dp">
 
-                <ScrollView
-                    android:id="@+id/dessertScrollView"
+                <LinearLayout
+                    android:id="@+id/dessertLinearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/beveragesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/tea_green"
+                android:fontFamily="@font/baloo"
+                android:gravity="center"
+                android:text="@string/beverages"
+                android:textColor="@color/forest_green"
+                android:textSize="30dp" />
 
+            <ScrollView
+                android:id="@+id/beveragesScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+                <LinearLayout
+                    android:id="@+id/beveragesLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
         </LinearLayout>
     </ScrollView>
 
