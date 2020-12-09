@@ -4,8 +4,6 @@ import java.util.*
 
 import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
-import com.example.cookingbythebook.cookbookpackage.Book
-import com.example.cookingbythebook.cookbookpackage.CookBook
 
 
 import android.graphics.pdf.PdfDocument
@@ -17,11 +15,13 @@ interface Iterator {
 }
 
 
-class BinaryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator {
+class BinaryIterator(var arr: MutableList<Page>, var index : Int) : Iterator {
     override fun right(): Page {
         return if(index < arr.size)
         {
-            arr[index++]
+            var temp: Int = index
+            temp += 1
+            arr[temp]
         }
         else {
             arr[index]
@@ -31,7 +31,9 @@ class BinaryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator {
     override fun left(): Page {
         return if(index > 0)
         {
-            arr[index++]
+            var temp2: Int = index
+            temp2 -= 1
+            arr[temp2]
         }
         else {
             arr[index]
@@ -43,7 +45,7 @@ class BinaryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator {
     }
 }
 
-class PreorderIterator(var arr: ArrayList<Page>) : Iterator {
+class PreorderIterator(var arr: MutableList<Page>) : Iterator {
     override fun right() : Page {
         val binaryRight = BinaryIterator(arr, 0)
         val size: Int = arr.size - 1
