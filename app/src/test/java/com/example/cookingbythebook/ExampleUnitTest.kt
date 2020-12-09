@@ -41,16 +41,16 @@ fun change_page_title() {
 @Test
 fun title_compile_list() {
     var cookBook: CookBook = CookBook("Vy's Cook Book")
-    var page1: Page = Recipe("Chocolate Cake")
-    var page2: Page = Recipe("Red Velvet Cake")
-    var page3: Page = Recipe("Brownie")
-    var page4: Page = Recipe("Cheesecake")
-    var page5: Page = Recipe("Mochi Donuts")
-    var page6: Page = Recipe("Glazed Donuts")
-    var page7: Page = Recipe("Tiramisu Cake")
-    var page8: Page = Recipe ("Vanilla Latte")
-    var page9: Page = Recipe("Chocolate Ice Cream")
-    var page10: Page = Recipe("Vanilla Ice Cream")
+    var page1: Recipe = Recipe("Chocolate Cake")
+    var page2: Recipe = Recipe("Red Velvet Cake")
+    var page3: Recipe = Recipe("Brownie")
+    var page4: Recipe = Recipe("Cheesecake")
+    var page5: Recipe = Recipe("Mochi Donuts")
+    var page6: Recipe = Recipe("Glazed Donuts")
+    var page7: Recipe = Recipe("Tiramisu Cake")
+    var page8: Recipe = Recipe ("Vanilla Latte")
+    var page9: Recipe = Recipe("Chocolate Ice Cream")
+    var page10: Recipe = Recipe("Vanilla Ice Cream")
 
     var titleStrategy: CompileStrategy = TitleCompileStrategy()
     cookBook.setListCompiler(titleStrategy)
@@ -68,62 +68,51 @@ fun title_compile_list() {
 fun tag_compile_list() {
     var cookBook: CookBook = CookBook("Vy's Cook Book")
 
-    var page1: Page = Recipe("Supreme Pizza")
-    var recipe1: Recipe = page1 as Recipe
-    recipe1.addTag("Italian")
-    recipe1.addTag("cheesy")
+    var page1: Recipe = Recipe("Supreme Pizza")
+    page1.addTag("Italian")
+    page1.addTag("cheesy")
 
-    var page2: Page = Recipe("Red Velvet Cake")
-    var recipe2: Recipe = page2 as Recipe
-    recipe2.addTag("dessert")
-    recipe2.addTag("cake")
+    var page2: Recipe = Recipe("Red Velvet Cake")
+    page2.addTag("dessert")
+    page2.addTag("cake")
 
-    var page3: Page = Recipe("Spaghetti")
-    var recipe3: Recipe = page3 as Recipe
-    recipe3.addTag("Italian")
-    recipe3.addTag("pasta")
+    var page3: Recipe = Recipe("Spaghetti")
+    page3.addTag("Italian")
+    page3.addTag("pasta")
 
-    var page4: Page = Recipe("Macaroni and Cheese")
-    var recipe4: Recipe = page4 as Recipe
-    recipe4.addTag("pasta")
-    recipe4.addTag("cheesy")
+    var page4: Recipe = Recipe("Macaroni and Cheese")
+    page4.addTag("pasta")
+    page4.addTag("cheesy")
 
-    var page5: Page = Recipe("Mochi Donuts")
-    var recipe5: Recipe = page5 as Recipe
-    recipe5.addTag("dessert")
-    recipe5.addTag("donuts")
+    var page5: Recipe = Recipe("Mochi Donuts")
+    page5.addTag("dessert")
+    page5.addTag("donuts")
 
-    var page6: Page = Recipe("Iced Americano")
-    var recipe6: Recipe = page6 as Recipe
-    recipe6.addTag("coffee")
-    recipe6.addTag("drinks")
+    var page6: Recipe = Recipe("Iced Americano")
+    page6.addTag("coffee")
+    page6.addTag("drinks")
 
-    var page7: Page = Recipe("Lasagna")
-    var recipe7: Recipe = page7 as Recipe
-    recipe7.addTag("Italian")
-    recipe7.addTag("pasta")
-    recipe7.addTag("cheesy")
+    var page7: Recipe = Recipe("Lasagna")
+    page7.addTag("Italian")
+    page7.addTag("pasta")
+    page7.addTag("cheesy")
 
-    var page8: Page = Recipe ("Vanilla Latte")
-    var recipe8: Recipe = page8 as Recipe
-    recipe8.addTag("drinks")
-    recipe8.addTag("coffee")
+    var page8: Recipe = Recipe ("Vanilla Latte")
+    page8.addTag("drinks")
+    page8.addTag("coffee")
 
-    var page9: Page = Recipe("Cheese Foam Green Tea")
-    var recipe9: Recipe = page9 as Recipe
-    recipe9.addTag("drinks")
-    recipe9.addTag("cheesy")
-    recipe9.addTag("tea")
+    var page9: Recipe = Recipe("Cheese Foam Green Tea")
+    page9.addTag("drinks")
+    page9.addTag("cheesy")
+    page9.addTag("tea")
 
-    var page10: Page = Recipe("Caramel Macchiato")
-    var recipe10: Recipe = page10 as Recipe
-    recipe10.addTag("coffee")
-    recipe10.addTag("drinks")
+    var page10: Recipe = Recipe("Caramel Macchiato")
+    page10.addTag("coffee")
+    page10.addTag("drinks")
 
-    var page11: Page = Recipe("Cheesecake")
-    var recipe11: Recipe = page11 as Recipe
-    recipe11.addTag("dessert")
-    recipe11.addTag("cheesy")
+    var page11: Recipe = Recipe("Cheesecake")
+    page11.addTag("dessert")
+    page11.addTag("cheesy")
 
     var tagStrategy: CompileStrategy = TagCompileStrategy()
     cookBook.setListCompiler(tagStrategy)
