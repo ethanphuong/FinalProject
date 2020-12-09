@@ -24,7 +24,7 @@ class TagCompileStrategy() : CompileStrategy() {
         var it = PreorderIterator(titlePage)
         
         //iterate through each page in the cookbook to grab information
-        while (it.isDone()) {
+        while (!it.isDone()) {
             //check if page is a recipe
             if (it.getCurrent() is Recipe) {
 
@@ -71,7 +71,7 @@ class TitleCompileStrategy() : CompileStrategy() {
         var it = PreorderIterator(titlePage)
 
         //iterate through each page in the cookbook to grab information
-        while (it.isDone()) {
+        while (!it.isDone()) {
             //check if page is a recipe
             if (it.getCurrent() is Recipe) {
 
@@ -109,7 +109,7 @@ class IngredientsCompileStrategy() : CompileStrategy() {
         var it = PreorderIterator(titlePage)
 
         //iterate through each page in the cookbook to grab information
-        while (it.hasNext()) {
+        while (!it.isDone()) {
             //check if page is a recipe
             if (it.getCurrent() is Recipe) {
 
@@ -130,7 +130,7 @@ class IngredientsCompileStrategy() : CompileStrategy() {
                     }
                 }
 
-                it.getNext();
+                it.getNext()
             }
         }
 

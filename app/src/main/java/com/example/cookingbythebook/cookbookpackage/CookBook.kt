@@ -56,16 +56,15 @@ class CookBook: Book{
     }
 
     override fun compile(searchInput: String): ArrayList<Page> {
+        var compiledList: ArrayList<Page> = ArrayList<Page>()
         if (compiler != null) {
             var it = PreorderIterator(titlePage)
             if (it.isDone()) {
-                var compiledList: ArrayList<Page> = ArrayList<Page>()
                 compiledList = compiler!!.compileList(titlePage, searchInput)
             }
-        }
-        else {
+        } else {
             throw IllegalArgumentException("List compiler required")
         }
+        return compiledList;
     }
-
 }

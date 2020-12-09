@@ -3,8 +3,6 @@ package com.example.cookingbythebook.compositepackage
 open class Page(protected open var title: String) {
     fun returnTitle(): String { return title }
     fun changeTitle(__title: String) { title = __title }
-
-    }
 }
 
 class Recipe(override var title: String) : Page(title) {
