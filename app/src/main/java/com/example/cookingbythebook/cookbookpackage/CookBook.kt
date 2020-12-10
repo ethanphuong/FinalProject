@@ -8,14 +8,17 @@ import com.example.cookingbythebook.strategypackage.CompileStrategy
 interface Book {
     var titlePage: Page?
     var compiler: CompileStrategy?
+    var pageCount: Int
     fun addPage(categoryName: String, page: Page)
     fun setListCompiler(_compiler: CompileStrategy)
     fun compile(searchInput: String): ArrayList<Page>
+    fun returnPageCount(): Int
 }
 
 class CookBook: Book{
     override var titlePage: Page? = null
     override var compiler: CompileStrategy? = null
+    override var pageCount = 1
 
     constructor(bookName: String) {
         titlePage = Category(bookName) //head page of the cookbook
@@ -26,6 +29,7 @@ class CookBook: Book{
         if (categoryName == "") {
             if (titlePage is Category) {
                 (titlePage as Category).addPage(page)
+                pageCount++
                 return
             }
         }
@@ -44,6 +48,7 @@ class CookBook: Book{
 
                 if (it.getCurrent() is Category && _pageTitle == _categoryName) {
                     it.getCurrent().addPage(page)
+                    pageCount++
                     return
                 }
                 it.getNext()
@@ -64,5 +69,9 @@ class CookBook: Book{
             throw IllegalArgumentException("List compiler required")
         }
         return compiledList;
+    }
+
+    fun returnPageCount(): Int {
+        return pageCount
     }
 }

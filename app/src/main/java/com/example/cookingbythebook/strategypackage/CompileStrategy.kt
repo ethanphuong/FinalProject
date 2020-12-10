@@ -61,9 +61,6 @@ class TitleCompileStrategy() : CompileStrategy() {
         //initialize temporary titleInput
         var titleInput = _titleInput
 
-        //length of titleInput string
-        var titleInputLength: Int = titleInput.count();
-
         //to lower titleInput
         titleInput = titleInput.toLowerCase()
 
