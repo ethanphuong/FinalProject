@@ -24,13 +24,12 @@
         android:id="@+id/editCategoryName"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/editCategoryName"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addRecipeTitle" />
 
@@ -38,13 +37,12 @@
         android:id="@+id/editRecipeName"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/editRecipeName"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCategoryName" />
 
@@ -73,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#B76E76"
+                android:onClick="switchListToTags"
                 android:text="@string/tags"
                 android:textColor="@color/red_brown"
                 app:backgroundTint="#B76E76" />
@@ -84,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#C698A0"
+                android:onClick="switchListToIngredients"
                 android:text="@string/ingredients"
                 android:textColor="@color/red_brown"
                 app:backgroundTint="#C698A0" />
@@ -95,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#CECDBC"
+                android:onClick="switchListToInstructions"
                 android:text="@string/instructions"
                 android:textColor="@color/red_brown"
                 app:backgroundTint="#CECDBC" />
@@ -103,13 +104,16 @@
         <ScrollView
             android:id="@+id/listScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="5dp">
 
-            <LinearLayout
-                android:id="@+id/listLinearLayout"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:layout_height="wrap_content" />
         </ScrollView>
 
     </LinearLayout>
