@@ -2,29 +2,20 @@ package com.example.cookingbythebook.iteratorpackage
 
 import java.util.Stack
 
-import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
-
-
-import android.graphics.pdf.PdfDocument
 
 interface Iterator {
     fun getNext()
     fun isDone(): Boolean
     fun first()
+    fun current(): Page?
 }
 interface CategoryIteratorInterface : Iterator{
     var atEnd: Boolean
-    fun current(): Page
 }
 
 interface PreorderIteratorInterface : Iterator {
     var iterators: Stack<Iterator>
-    fun current(): Iterator
-}
-
-interface NullIteratorInterface : Iterator {
-    fun current()
 }
 
 class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator, CategoryIteratorInterface {
@@ -62,7 +53,7 @@ class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator, Ca
         index = 0
     }
 
-    override fun current(): Page {
+    override fun current(): Page? {
         return arr[index]
     }
 }
@@ -86,8 +77,7 @@ class PreorderIterator(var titlePage: Page?) : Iterator, PreorderIteratorInterfa
     }
 
     override fun getNext() {
-        var topIterator: Iterator = current()
-        topIterator = titlePage?.createIterator()
+        val topIterator: Iterator = iterators.peek().current()?.createIterator() 
         topIterator.first()
         iterators.push(topIterator)
         while(!iterators.empty() && iterators.peek().isDone())
@@ -104,14 +94,15 @@ class PreorderIterator(var titlePage: Page?) : Iterator, PreorderIteratorInterfa
         return iterators.empty()
     }
 
-    override fun current() : Iterator {
-        return iterators.peek()
+    override fun current(): Page? {
+        return iterators.peek().current()
     }
 }
 
-class NullIterator(var titlePage: Page?) : Iterator, NullIteratorInterface
+class NullIterator(var titlePage: Page?) : Iterator
 {
-    override fun current() {
+    override fun current(): Page? {
+        return null
     }
 
     override fun getNext() {
