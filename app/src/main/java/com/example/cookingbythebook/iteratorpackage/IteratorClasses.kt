@@ -23,6 +23,10 @@ interface PreorderIteratorInterface : Iterator {
     fun current(): Iterator
 }
 
+interface NullIteratorInterface : Iterator {
+    fun current()
+}
+
 class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator, CategoryIteratorInterface {
 
     override var atEnd: Boolean = false
@@ -103,6 +107,23 @@ class PreorderIterator(var titlePage: Page?) : Iterator, PreorderIteratorInterfa
     override fun current() : Iterator {
         return iterators.peek()
     }
+}
+
+class NullIterator(var titlePage: Page?) : Iterator, NullIteratorInterface
+{
+    override fun current() {
+    }
+
+    override fun getNext() {
+    }
+
+    override fun isDone(): Boolean {
+        return true
+    }
+
+    override fun first() {
+    }
+
 }
 
 
