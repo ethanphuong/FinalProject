@@ -6,11 +6,15 @@
     <string name="dessert">Dessert</string>
     <string name="beverages">Beverages</string>
     <string name="cookBookName">Username\'s Cook Book</string>
-    <string name="addRecipeButtonName">+</string>
-    <string name="editCategoryName">Category Name</string>
-    <string name="editRecipeName">Recipe Name</string>
-    <string name="editTags">Tags</string>
-    <string name="editIngredients">Ingredients</string>
-    <string name="editInstructions">Instructions</string>
+    <string name="addRecipeBtn">+R</string>
+    <string name="addCategoryBtn">+C</string>
+    <string name="CategoryName">Category Name</string>
+    <string name="RecipeName">Recipe Name</string>
+    <string name="Tags">Tags</string>
+    <string name="Ingredients">Ingredients</string>
+    <string name="Instructions">Instructions</string>
     <string name="addRecipeTitle">Add Recipe</string>
+    <string name="addCategoryTitle">Add Category</string>
+    <string name="addCategoryToCategory">Add Category to ...</string>
+    <string name="add">ADD</string>
 </resources>

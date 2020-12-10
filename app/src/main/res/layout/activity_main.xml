@@ -7,27 +7,47 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/addRecipeButton"
+        android:id="@+id/addCategoryBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/circle"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:onClick="goToAddCategoryPage"
+        android:text="@string/addCategoryBtn"
+        android:textColor="@color/magenta_brown"
+        android:textSize="30sp"
+        app:backgroundTint="#bc5c79"
+        app:layout_constraintBottom_toTopOf="@+id/addRecipeBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
+
+    <Button
+        android:id="@+id/addRecipeBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/circle"
         android:fontFamily="@font/baloo"
         android:gravity="center"
         android:onClick="goToAddRecipePage"
-        android:text="@string/addRecipeButtonName"
+        android:text="@string/addRecipeBtn"
         android:textColor="@color/red_brown"
         android:textSize="30sp"
         app:backgroundTint="@color/melon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

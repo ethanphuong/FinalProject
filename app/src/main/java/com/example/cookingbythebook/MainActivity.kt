@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         /*Intent(this, AddRecipeActivity::class.java).apply {
             startActivity(this)
         }*/
+    }
 
+    fun goToAddCategoryPage(view: View){
+        val intent = Intent(this, AddCategoryActivity::class.java)
+        startActivity(intent)
     }
 }
