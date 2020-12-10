@@ -17,4 +17,6 @@
     <string name="addCategoryTitle">Add Category</string>
     <string name="addCategoryToCategory">Add Category to ...</string>
     <string name="add">ADD</string>
+    <string name="delete">DELETE</string>
+    <string name="edit">EDIT</string>
 </resources>

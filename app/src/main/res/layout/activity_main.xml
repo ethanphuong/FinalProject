@@ -10,7 +10,6 @@
         android:id="@+id/addCategoryBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="5dp"
         android:background="@drawable/circle"
         android:fontFamily="@font/baloo"
         android:gravity="center"
@@ -45,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/mainScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,10 +77,8 @@
                 <LinearLayout
                     android:id="@+id/breakfastLinearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                </LinearLayout>
+                    android:layout_height="60dp"
+                    android:orientation="vertical"/>
             </ScrollView>
 
             <TextView

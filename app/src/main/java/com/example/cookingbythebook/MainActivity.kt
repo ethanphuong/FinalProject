@@ -1,34 +1,57 @@
 package com.example.cookingbythebook
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.core.content.res.ResourcesCompat
 import com.example.cookingbythebook.compositepackage.Category
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     var titlePage: Category = Category("")
 
+    //@SuppressLint("ResourceType")
+    //@RequiresApi(Build.VERSION_CODES.Q)
+    @SuppressLint("ResourceAsColor")
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val bundle: Bundle? = intent.extras
 
-        var categoryInput: String? = bundle?.getString("categoryName").toString()
-        var addCategoryToInput: String? = bundle?.getString("addCategoryTo").toString()
+        var categoryInput: String? = bundle?.getString("categoryName")
+        var addCategoryToInput: String? = bundle?.getString("addCategoryTo")
 
         var mainLinearLayout: LinearLayout? = findViewById(R.id.mainLinearLayout)
         var categoryLinearLayout: LinearLayout? = findCategoryLayout(mainLinearLayout, addCategoryToInput)
 
         var categoryBtn = Button(applicationContext)
-        categoryBtn.text = categoryInput
+        categoryBtn.setText(categoryInput)
+        categoryBtn.setTextColor(resources.getColor(R.color.dark_aqua_blue))
+        categoryBtn.setTypeface(ResourcesCompat.getFont(this, R.font.baloo))
+        categoryBtn.setTextSize(16F)
+        categoryBtn.setBackgroundColor(resources.getColor(R.color.aqua_blue))
         categoryLinearLayout?.addView(categoryBtn)
+        categoryBtn.setOnClickListener {
+            val intent = Intent(this, CategoryPageActivity::class.java)
+
+            var bundle: Bundle = Bundle()
+            bundle.putString("categoryName", categoryInput)
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
 
     }
 

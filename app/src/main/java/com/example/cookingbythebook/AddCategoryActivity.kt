@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 
 class AddCategoryActivity : AppCompatActivity() {
-    var categoryName: String = ""
+    var categoryInput: String = ""
     var addCategoryTo: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +25,11 @@ class AddCategoryActivity : AppCompatActivity() {
         val categoryNameInput: EditText = findViewById(R.id.editCategoryName)
         val addCategoryToInput: EditText = findViewById(R.id.editAddCategoryTo)
 
-        categoryName = categoryNameInput.text.toString()
+        categoryInput = categoryNameInput.text.toString()
         addCategoryTo = addCategoryToInput.text.toString()
 
         var bundle: Bundle = Bundle()
-        bundle.putString("categoryName", categoryName)
+        bundle.putString("categoryName", categoryInput)
         bundle.putString("addCategoryTo", addCategoryTo)
         intent.putExtras(bundle)
 
