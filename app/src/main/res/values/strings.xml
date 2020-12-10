@@ -9,8 +9,12 @@
     <string name="addRecipeButtonName">+</string>
     <string name="editCategoryName">Category Name</string>
     <string name="editRecipeName">Recipe Name</string>
-    <string name="editTags">Tags</string>
-    <string name="editIngredients">Ingredients</string>
-    <string name="editInstructions">Instructions</string>
+    <string name="tags">Tags</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
     <string name="addRecipeTitle">Add Recipe</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="add">Add</string>
+    <string name="finish">Finish</string>
 </resources>

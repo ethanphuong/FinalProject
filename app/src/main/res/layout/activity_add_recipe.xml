@@ -22,67 +22,169 @@
 
     <EditText
         android:id="@+id/editCategoryName"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
+        android:hint="@string/editCategoryName"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="@string/editCategoryName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addRecipeTitle" />
 
     <EditText
         android:id="@+id/editRecipeName"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
+        android:hint="@string/editRecipeName"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="@string/editRecipeName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCategoryName" />
 
-    <EditText
-        android:id="@+id/editTags"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+    <LinearLayout
+        android:id="@+id/mainLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/editTags"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRecipeName" />
+        app:layout_constraintTop_toBottomOf="@+id/editRecipeName"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/buttonTabsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tagsSwitchBtn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#B76E76"
+                android:text="@string/tags"
+                android:textColor="@color/red_brown"
+                app:backgroundTint="#B76E76" />
+
+            <Button
+                android:id="@+id/ingredientsSwitchBtn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#C698A0"
+                android:text="@string/ingredients"
+                android:textColor="@color/red_brown"
+                app:backgroundTint="#C698A0" />
+
+            <Button
+                android:id="@+id/instructionsSwitchBtn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#CECDBC"
+                android:text="@string/instructions"
+                android:textColor="@color/red_brown"
+                app:backgroundTint="#CECDBC" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/listScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/listLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/deleteObjectBtn"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:background="#922220"
+        android:text="@string/delete"
+        app:backgroundTint="#922220"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainLinearLayout" />
 
     <EditText
-        android:id="@+id/editIngreditents"
+        android:id="@+id/inputTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
+        android:hint="Input a tag"
         android:inputType="textPersonName"
-        android:text="@string/editIngredients"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTags" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteObjectBtn" />
 
-    <EditText
-        android:id="@+id/editInstructions"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/editInstructions"
+        android:layout_marginBottom="93dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editIngreditents" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteObjectBtn"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/renameObjectBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F1DABB"
+            android:text="@string/edit"
+            app:backgroundTint="#F1DABB" />
+
+        <Button
+            android:id="@+id/addObjectBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:background="#99E6B3"
+            android:onClick="addInput"
+            android:text="@string/add"
+            app:backgroundTint="#99E6B3" />
+
+        <Button
+            android:id="@+id/finishRecipeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:background="#90D27B"
+            android:text="@string/finish"
+            app:backgroundTint="#90D27B" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
