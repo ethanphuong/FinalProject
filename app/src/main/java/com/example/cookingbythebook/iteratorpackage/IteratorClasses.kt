@@ -18,7 +18,7 @@ interface PreorderIteratorInterface : CookbookIterator {
     var iterators: Stack<CookbookIterator>
 }
 
-class CategoryIterator(var arr: MutableList<Page>, var index : Int) : CookbookIterator, CategoryIteratorInterface {
+class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : CookbookIterator, CategoryIteratorInterface {
 
     override var atEnd: Boolean = false
 
