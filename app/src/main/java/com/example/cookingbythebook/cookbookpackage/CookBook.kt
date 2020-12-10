@@ -71,7 +71,7 @@ class CookBook: Book{
         return compiledList;
     }
 
-    fun returnPageCount(): Int {
+    override fun returnPageCount(): Int {
         return pageCount
     }
 }
