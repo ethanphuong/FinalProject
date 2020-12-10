@@ -4,21 +4,21 @@ import java.util.Stack
 
 import com.example.cookingbythebook.compositepackage.Page
 
-interface Iterator {
+interface CookbookIterator {
     fun getNext()
     fun isDone(): Boolean
     fun first()
     fun current(): Page?
 }
-interface CategoryIteratorInterface : Iterator{
+interface CategoryIteratorInterface : CookbookIterator{
     var atEnd: Boolean
 }
 
-interface PreorderIteratorInterface : Iterator {
-    var iterators: Stack<Iterator>
+interface PreorderIteratorInterface : CookbookIterator {
+    var iterators: Stack<CookbookIterator>
 }
 
-class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator, CategoryIteratorInterface {
+class CategoryIterator(var arr: MutableList<Page>, var index : Int) : CookbookIterator, CategoryIteratorInterface {
 
     override var atEnd: Boolean = false
 
@@ -58,12 +58,12 @@ class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator, Ca
     }
 }
 
-class PreorderIterator(var titlePage: Page?) : Iterator, PreorderIteratorInterface {
+class PreorderIterator(var titlePage: Page?) : CookbookIterator, PreorderIteratorInterface {
 
-    override var iterators: Stack<Iterator> = Stack<Iterator>()
+    override var iterators: Stack<CookbookIterator> = Stack<CookbookIterator>()
 
     constructor(){
-        iterators = Stack<Iterator>()
+        iterators = Stack<CookbookIterator>()
     }
 
     override fun first(){
@@ -72,13 +72,13 @@ class PreorderIterator(var titlePage: Page?) : Iterator, PreorderIteratorInterfa
             iterators.pop()
         }
         val rootIterator = titlePage?.createIterator()
-        rootIterator.first()
+        rootIterator?.first()
         iterators.push(rootIterator)
     }
 
     override fun getNext() {
-        val topIterator: Iterator = iterators.peek().current()?.createIterator() 
-        topIterator.first()
+        val topIterator: CookbookIterator? = iterators.peek().current()?.createIterator()
+        topIterator?.first()
         iterators.push(topIterator)
         while(!iterators.empty() && iterators.peek().isDone())
         {
@@ -99,7 +99,7 @@ class PreorderIterator(var titlePage: Page?) : Iterator, PreorderIteratorInterfa
     }
 }
 
-class NullIterator(var titlePage: Page?) : Iterator
+class NullIterator(var titlePage: Page?) : CookbookIterator
 {
     override fun current(): Page? {
         return null

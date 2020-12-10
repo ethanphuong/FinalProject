@@ -1,11 +1,13 @@
 package com.example.cookingbythebook.compositepackage
 
-import com.example.cookingbythebook.iteratorpackage.Iterator
+import com.example.cookingbythebook.iteratorpackage.CookbookIterator
+import com.example.cookingbythebook.iteratorpackage.PreorderIterator
+import com.example.cookingbythebook.iteratorpackage.NullIterator
 
 abstract class Page(protected open var title: String) {
     fun returnTitle(): String { return title }
     fun changeTitle(__title: String) { title = __title }
-    abstract fun createIterator(): Iterator
+    abstract fun createIterator(): CookbookIterator
 }
 
 class Recipe(override var title: String) : Page(title) {
@@ -28,7 +30,7 @@ class Recipe(override var title: String) : Page(title) {
     fun returnInstruction(loc: Int): String { return instructions[loc] }
     fun returnInstructionsCount(): Int { return instructions.count() }
 
-    override fun createIterator(): Iterator { return NullIterator(this) }
+    override fun createIterator(): CookbookIterator { return NullIterator(this) }
 }
 
 class Category(override var title: String) : Page(title) {
@@ -39,5 +41,5 @@ class Category(override var title: String) : Page(title) {
     fun returnPage(loc: Int): Page { return pages[loc] }
     fun returnPagesCount(): Int { return pages.count() }
 
-    override fun createIterator(): Iterator { return CategoryIterator(this) }
+    override fun createIterator(): CookbookIterator { return PreorderIterator(this) }
 }
