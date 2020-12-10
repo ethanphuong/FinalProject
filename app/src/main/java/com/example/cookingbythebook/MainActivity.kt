@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         var categoryBtn = Button(applicationContext)
         categoryBtn.text = categoryInput
-        categoryBtn.background =
         categoryLinearLayout?.addView(categoryBtn)
 
     }
