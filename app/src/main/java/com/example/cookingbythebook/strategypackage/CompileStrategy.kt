@@ -22,11 +22,12 @@ class TagCompileStrategy() : CompileStrategy() {
 
         //create iterator (return a page)
         var it = PreorderIterator(titlePage)
-        
+        it.first()
+
         //iterate through each page in the cookbook to grab information
         while (!it.isDone()) {
             //check if page is a recipe
-            if (it.getCurrent() is Recipe) {
+            if (it.current() is Recipe) {
 
                 //get size of recipe's tagsList
                 val tagsListCount: Int = it.current().returnTagsCount();
@@ -34,14 +35,14 @@ class TagCompileStrategy() : CompileStrategy() {
                 //iterate through tag vector in a recipe page
                 for (i in 0 until tagsListCount) {
                     // get tag at an index
-                    var tag: String = it.getCurrent().returnTag(i)
+                    var tag: String = it.current().returnTag(i)
 
                     //to lower tag string
                     tag = tag.toLowerCase()
 
                     //compare recipe's tag to user's input
                     if (tag == tagInput) {
-                        tagRecipeList.add(it.getCurrent())
+                        tagRecipeList.add(it.current())
                     }
                 }
             }
@@ -66,21 +67,22 @@ class TitleCompileStrategy() : CompileStrategy() {
 
         //create iterator
         var it = PreorderIterator(titlePage)
+        it.first()
 
         //iterate through each page in the cookbook to grab information
         while (!it.isDone()) {
             //check if page is a recipe
-            if (it.getCurrent() is Recipe) {
+            if (it.current() is Recipe) {
 
                 //page's recipe's title
-                var title: String = it.getCurrent().returnTitle()
+                var title: String = it.current().returnTitle()
 
                 //to lower title
                 title = title.toLowerCase()
 
                 //compare recipe's title to user's input
                 if (title.contains(titleInput)) {
-                    titleRecipeList.add(it.getCurrent())
+                    titleRecipeList.add(it.current())
                 }
             }
 
@@ -104,11 +106,12 @@ class IngredientsCompileStrategy() : CompileStrategy() {
 
         //create iterator
         var it = PreorderIterator(titlePage)
+        it.first()
 
         //iterate through each page in the cookbook to grab information
         while (!it.isDone()) {
             //check if page is a recipe
-            if (it.getCurrent() is Recipe) {
+            if (it.current() is Recipe) {
 
                 //get size of recipe's ingredientsList
                 var ingredientsListCount: Int = it.returnIngredientsCount();
@@ -116,14 +119,14 @@ class IngredientsCompileStrategy() : CompileStrategy() {
                 //iterate through each ingredients in the recipe
                 for (i in 0 until ingredientsListCount) {
                     //get ingredient at an index
-                    var ingredient: String = it.getCurrent().returnIngredient(i)
+                    var ingredient: String = it.current().returnIngredient(i)
 
                     //to lower ingredient string
                     ingredient = ingredient.toLowerCase()
 
                     //compare recipe's ingredients to user's input
                     if (ingredient == ingredientInput) {
-                        ingredientRecipeList.add(it.getCurrent())
+                        ingredientRecipeList.add(it.current())
                     }
                 }
 

@@ -39,15 +39,15 @@ class CookBook: Book{
 
         if (titlePage != null) {
             var it = PreorderIterator(titlePage)
-
             it.first()
+
             while (!it.isDone()) {
                 // to lower page's title
-                var _pageTitle: String = it.getCurrent().returnTitle()
+                var _pageTitle: String = it.current().returnTitle()
                 _pageTitle.toLowerCase()
 
-                if (it.getCurrent() is Category && _pageTitle == _categoryName) {
-                    it.getCurrent().addPage(page)
+                if (it.current() is Category && _pageTitle == _categoryName) {
+                    it.current().addPage(page)
                     pageCount++
                     return
                 }
