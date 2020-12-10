@@ -23,11 +23,18 @@ class CategoryPageActivity : AppCompatActivity() {
 
     fun goToAddRecipePage(view: View) {
         val intent = Intent(this, AddRecipeActivity::class.java)
+
         startActivity(intent)
     }
 
     fun goToAddCategoryPage(view: View) {
         val intent = Intent(this, AddCategoryActivity::class.java)
+
+        var bundle: Bundle = Bundle()
+        val activityCameFrom: String = "Category Page Activity"
+        bundle.putString("activityCameFrom", activityCameFrom)
+        intent.putExtras(bundle)
+
         startActivity(intent)
     }
 

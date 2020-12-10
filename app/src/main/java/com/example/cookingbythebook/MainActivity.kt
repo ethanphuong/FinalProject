@@ -86,6 +86,12 @@ class MainActivity : AppCompatActivity() {
 
     fun goToAddCategoryPage(view: View){
         val intent = Intent(this, AddCategoryActivity::class.java)
+
+        var bundle: Bundle = Bundle()
+        val activityCameFrom: String = "Main Activity"
+        bundle.putString("activityCameFrom", activityCameFrom)
+        intent.putExtras(bundle)
+
         startActivity(intent)
 
     }

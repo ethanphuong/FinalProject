@@ -16,7 +16,11 @@ class AddCategoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_category)
 
-        println("Hello World!")
+        val bundle: Bundle? = intent.extras
+        val activityCameFrom: String? = bundle?.getString("activityCameFrom")
+
+
+
     }
 
     fun submitCategoryOnClick(view: View) {
