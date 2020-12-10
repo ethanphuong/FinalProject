@@ -80,14 +80,14 @@ class PreorderIterator(var titlePage: Page?) : Iterator, PreorderIteratorInterfa
         {
             iterators.pop()
         }
-        var rootIterator = Category.createIterator()
+        val rootIterator = titlePage?.createIterator()
         rootIterator.first()
         iterators.push(rootIterator)
     }
 
     override fun getNext() {
         var topIterator: Iterator = current()
-        topIterator = Category.createIterator()
+        topIterator = titlePage?.createIterator()
         topIterator.first()
         iterators.push(topIterator)
         while(!iterators.empty() && iterators.peek().isDone())
