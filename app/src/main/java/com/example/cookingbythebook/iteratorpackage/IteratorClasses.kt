@@ -45,6 +45,8 @@ class CategoryIterator(var arr: Category) : CookbookIterator{
     }
 
     override fun current(): Page? {
+        System.out.println(arr.returnTitle().toString())
+        System.out.println(index.toString())
         return arr.returnPage(index)
     }
 }

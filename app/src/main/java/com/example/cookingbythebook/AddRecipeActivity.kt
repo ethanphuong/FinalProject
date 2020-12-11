@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookingbythebook.compositepackage.Recipe
+import com.example.cookingbythebook.iteratorpackage.CookbookIterator
 import com.example.cookingbythebook.recyclerviewpackage.MyAdapter
+import com.example.cookingbythebook.cookbookpackage.CookBook
 
 
 class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
@@ -159,21 +161,27 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
             else -> {
                 val prevBundle: Bundle? = intent.extras
                 val prevActivity: String? = prevBundle?.getString("activityCameFrom")
+                val cookbook: CookBook? = prevBundle?.getParcelable<CookBook>("cookbook")
 
                 var bundle: Bundle = Bundle()
                 bundle.putString("activityCameFrom", "Add Recipe Category")
-                bundle.putString("addCategoryTo", categoryTV.text.toString())
+                //bundle.putString("addCategoryTo", categoryTV.text.toString())
+                bundle.putString("categoryName", categoryTV.text.toString())
+
+                recipe.changeTitle(recipeTV.text.toString())
 
                 when(prevActivity){
                     "Main Activity" -> {
                         val intent = Intent(this, MainActivity::class.java)
                         intent.putExtra("recipe", recipe)
+                        intent.putExtra("cookbook", cookbook)
                         intent.putExtras(bundle)
                         startActivity(intent)
                     }
                     "Category Page Activity" -> {
-                        val intent = Intent(this, AddCategoryActivity::class.java)
+                        val intent = Intent(this, CategoryPageActivity::class.java)
                         intent.putExtra("recipe", recipe)
+                        intent.putExtra("cookbook", cookbook)
                         intent.putExtras(bundle)
                         startActivity(intent)
                     }

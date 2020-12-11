@@ -12,7 +12,7 @@ abstract class Page(protected open var title: String) : Parcelable {
     abstract fun createIterator(): CookbookIterator
 }
 
-class Recipe(override var title: String) : Page(title) {
+class Recipe(override var title: String) : Page(title), Parcelable {
     private var tags = ArrayList<String>()
     private var ingredients = ArrayList<String>()
     private var instructions = ArrayList<String>()
@@ -22,7 +22,12 @@ class Recipe(override var title: String) : Page(title) {
         ingredients = _ingredients
         instructions = _instructions
     }
-    constructor(parcel: Parcel) : this(parcel.readString().toString()) {
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.createStringArrayList() as ArrayList<String>,
+        parcel.createStringArrayList() as ArrayList<String>,
+        parcel.createStringArrayList() as ArrayList<String>
+    ) {
 
     }
 
@@ -48,6 +53,9 @@ class Recipe(override var title: String) : Page(title) {
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)
+        parcel.writeStringList(tags)
+        parcel.writeStringList(ingredients)
+        parcel.writeStringList(instructions)
     }
 
     override fun describeContents(): Int {
@@ -68,7 +76,17 @@ class Recipe(override var title: String) : Page(title) {
 class Category(override var title: String) : Page(title) {
     private var pages = ArrayList<Page>()
 
-    constructor(parcel: Parcel) : this(parcel.readString().toString()) {
+    constructor(_title: String, _pages: java.util.ArrayList<Recipe>?) : this(_title) {
+        if(_pages != null) {
+            for (i in 1.._pages.size) {
+                pages.add(_pages[i - 1])
+            }
+        }
+    }
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.createTypedArrayList(Recipe.CREATOR)
+    ) {
 
     }
 
@@ -88,6 +106,7 @@ class Category(override var title: String) : Page(title) {
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)
+        parcel.writeTypedArray(pages.toTypedArray(), flags)
     }
 
     override fun describeContents(): Int {

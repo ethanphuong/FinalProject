@@ -56,25 +56,7 @@
             android:id="@+id/tagsLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tag1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/light_pink"
-                android:fontFamily="@font/baloo"
-                android:gravity="center"
-                android:paddingLeft="30dp"
-                android:paddingTop="5dp"
-                android:paddingRight="30dp"
-                android:paddingBottom="5dp"
-                android:text="@string/Tags"
-                android:textColor="@color/black_pink"
-                android:textSize="14sp" />
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
     </HorizontalScrollView>
 
     <TextView
