@@ -29,7 +29,7 @@
         android:layout_marginTop="140dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/editCategoryName"
+        android:text="@string/CategoryName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/editRecipeName"
+        android:text="@string/RecipeName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCategoryName" />
 
@@ -55,7 +55,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/editTags"
+        android:text="@string/Tags"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRecipeName" />
 
@@ -68,7 +68,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/editIngredients"
+        android:text="@string/Ingredients"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTags" />
 
@@ -81,7 +81,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/editInstructions"
+        android:text="@string/Instructions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editIngreditents" />
 

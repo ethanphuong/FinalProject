@@ -11,6 +11,19 @@
     <color name="tea_green">#c3efca</color>
     <color name="forest_green">#103c18</color>
     <color name="red_brown">#862d2d</color>
+    <color name="magenta_brown">#5b2535</color>
+    <color name="magenta">#bc5c79</color>
+    <color name="teal_100">#93e1d8</color>
+    <color name="teal_800">#103c37</color>
+    <color name="pink">#ee909d</color>
+    <color name="black_pink">#590d17</color>
+    <color name="light_pink">#f8d3d8</color>
+    <color name="pink_300">#e86475</color>
+    <color name="aqua_blue">#98e6c6</color>
+    <color name="dark_aqua_blue">#0f3e2a</color>
+    <color name="light_blue">#92d2e2</color>
+    <color name="dark_blue">#10343d</color>
+
 
     <color name="colorPrimary">#85e0e0</color>
     <color name="colorPrimaryDark">#196666</color>
