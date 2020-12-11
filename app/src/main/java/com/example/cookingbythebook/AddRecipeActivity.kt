@@ -1,5 +1,6 @@
 package com.example.cookingbythebook
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -147,5 +148,35 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
         }
         //findViewById<TextView>(R.id.editCategoryName).text = highlighted.toString() <- use this for testing purposes
         myAdapter.notifyItemChanged(position)
+    }
+
+    fun sendFinishedRecipe(view: View){
+        val categoryTV = findViewById<TextView>(R.id.editCategoryName)
+        val recipeTV = findViewById<TextView>(R.id.editRecipeName)
+        when{
+            categoryTV.text.toString() == "" -> Toast.makeText(this, "Please enter a category to put the recipe into.", Toast.LENGTH_SHORT).show()
+            recipeTV.text.toString() == "" -> Toast.makeText(this, "Please enter a name for the recipe.", Toast.LENGTH_SHORT).show()
+            else -> {
+                val prevBundle: Bundle? = intent.extras
+                val prevActivity: String? = prevBundle?.getString("activityCameFrom")
+
+                var bundle: Bundle = Bundle()
+                bundle.putString("activityCameFrom", "Add Recipe Category")
+
+                when(prevActivity){
+                    "Main Activity" -> {
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("recipe", recipe)
+                        startActivity(intent)
+                    }
+                    "Category Page Activity" -> {
+                        val intent = Intent(this, AddCategoryActivity::class.java)
+                        intent.putExtra("recipe", recipe)
+                        startActivity(intent)
+                    }
+                    else -> {}
+                }
+            }
+        }
     }
 }

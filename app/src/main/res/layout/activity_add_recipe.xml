@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="@string/editRecipeName"
+        android:hint="@string/RecipeName"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="@string/editCategoryName"
+        android:hint="@string/CategoryName"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,18 +47,19 @@
         android:id="@+id/inputTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginRight="36dp"
         android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
         android:ems="10"
-        android:hint="Input a tag"
+        android:hint="@string/input_information"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteObjectBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteObjectBtn"
+        android:importantForAutofill="no" />
 
     <LinearLayout
         android:id="@+id/mainLinearLayout"
@@ -86,7 +87,7 @@
                 android:layout_weight="1"
                 android:background="#B76E76"
                 android:onClick="switchListToTags"
-                android:text="@string/tags"
+                android:text="@string/Tags"
                 android:textColor="@color/red_brown"
                 app:backgroundTint="#B76E76" />
 
@@ -98,7 +99,7 @@
                 android:layout_weight="1"
                 android:background="#C698A0"
                 android:onClick="switchListToIngredients"
-                android:text="@string/ingredients"
+                android:text="@string/Ingredients"
                 android:textColor="@color/red_brown"
                 app:backgroundTint="#C698A0" />
 
@@ -110,7 +111,7 @@
                 android:layout_weight="1"
                 android:background="#CECDBC"
                 android:onClick="switchListToInstructions"
-                android:text="@string/instructions"
+                android:text="@string/Instructions"
                 android:textColor="@color/red_brown"
                 app:backgroundTint="#CECDBC" />
         </LinearLayout>
