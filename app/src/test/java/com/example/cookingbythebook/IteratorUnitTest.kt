@@ -3,8 +3,6 @@ package com.example.cookingbythebook
 import com.example.cookingbythebook.cookbookpackage.CookBook
 import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.iteratorpackage.CookbookIterator
-import com.example.cookingbythebook.compositepackage.Category
-import com.example.cookingbythebook.iteratorpackage.CategoryIterator
 import com.example.cookingbythebook.iteratorpackage.PreorderIterator
 import org.junit.Test
 
