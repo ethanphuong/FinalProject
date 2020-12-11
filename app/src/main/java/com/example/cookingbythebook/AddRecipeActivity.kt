@@ -18,6 +18,7 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
     private var recipe: Recipe = Recipe("")
     private var switch: String = "tag"
+    private var highlighted: Int = -1
     private var al = ArrayList<String>()
 
     private lateinit var recyclerView: RecyclerView
@@ -56,6 +57,42 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
         }
         else{
             Toast.makeText(this, "Please enter something into the text field.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun removeItem(view: View){
+        if(highlighted == -1){
+            Toast.makeText(this, "Please select an item from the list first.", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            when(switch){
+                "tag" -> recipe.removeTag(recipe.returnTag(highlighted))
+                "ingredient" -> recipe.removeIngredient(recipe.returnIngredient(highlighted))
+                "instruction" -> recipe.removeInstruction(recipe.returnInstruction(highlighted))
+            }
+            highlighted = -1
+            updateList()
+        }
+    }
+
+    fun editItem(view: View){
+        val textView = findViewById<TextView>(R.id.inputTextView)
+        val text: String = textView.text.toString()
+        if(highlighted == -1){
+            Toast.makeText(this, "Please select an item to edit from the list first.", Toast.LENGTH_SHORT).show()
+        }
+        else if(text == ""){
+            Toast.makeText(this, "Please input the new text in the text field to the left.", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            when(switch){
+                "tag" -> recipe.editTag(highlighted, text)
+                "ingredient" -> recipe.editIngredient(highlighted, text)
+                "instruction" -> recipe.editInstruction(highlighted, text)
+            }
+            textView.text = ""
+
+            updateList()
         }
     }
 
@@ -103,8 +140,12 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
-        //val clickedItem =
+        //Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show() <- use this for testing
+        highlighted = when(highlighted) {
+            position -> -1
+            else -> position
+        }
+        //findViewById<TextView>(R.id.editCategoryName).text = highlighted.toString() <- use this for testing purposes
         myAdapter.notifyItemChanged(position)
     }
 }

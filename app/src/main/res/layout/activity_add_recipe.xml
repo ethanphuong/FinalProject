@@ -6,19 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".AddRecipeActivity">
 
-    <TextView
-        android:id="@+id/addRecipeTitle"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:background="@color/melon"
-        android:fontFamily="@font/baloo"
-        android:gravity="center"
-        android:text="@string/addRecipeTitle"
-        android:textColor="@color/red_brown"
-        android:textSize="30sp"
+    <Button
+        android:id="@+id/deleteObjectBtn"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:background="#922220"
+        android:onClick="removeItem"
+        android:text="@string/delete"
+        app:backgroundTint="#922220"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainLinearLayout" />
+
+    <EditText
+        android:id="@+id/editRecipeName"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/editRecipeName"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editCategoryName" />
 
     <EditText
         android:id="@+id/editCategoryName"
@@ -34,17 +44,21 @@
         app:layout_constraintTop_toBottomOf="@+id/addRecipeTitle" />
 
     <EditText
-        android:id="@+id/editRecipeName"
-        android:layout_width="350dp"
+        android:id="@+id/inputTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
-        android:hint="@string/editRecipeName"
-        android:importantForAutofill="no"
+        android:hint="Input a tag"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCategoryName" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteObjectBtn" />
 
     <LinearLayout
         android:id="@+id/mainLinearLayout"
@@ -118,33 +132,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/deleteObjectBtn"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:background="#922220"
-        android:text="@string/delete"
-        app:backgroundTint="#922220"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainLinearLayout" />
-
-    <EditText
-        android:id="@+id/inputTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginRight="36dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="Input a tag"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteObjectBtn" />
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
@@ -163,6 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#F1DABB"
+            android:onClick="editItem"
             android:text="@string/edit"
             app:backgroundTint="#F1DABB" />
 
@@ -190,5 +178,19 @@
             app:backgroundTint="#90D27B" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/addRecipeTitle"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/melon"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:text="@string/addRecipeTitle"
+        android:textColor="@color/red_brown"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
