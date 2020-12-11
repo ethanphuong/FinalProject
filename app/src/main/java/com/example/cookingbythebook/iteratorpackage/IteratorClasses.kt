@@ -1,83 +1,115 @@
 package com.example.cookingbythebook.iteratorpackage
 
-import java.util.*
-
 import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
-//import com.example.cookingbythebook.cookbookpackage.Book
-//import com.example.cookingbythebook.cookbookpackage.CookBook
+import java.util.*
 
-
-import android.graphics.pdf.PdfDocument
-
-interface Iterator {
-    fun right(): Page
-    fun left(): Page
-    fun getCurrent(): Page
+interface CookbookIterator {
+    fun getNext()
+    fun isDone(): Boolean
+    fun first()
+    fun current(): Page?
 }
 
 
-class BinaryIterator(var arr: ArrayList<Page>, var index : Int) : Iterator {
-    override fun right(): Page {
-        return if(index < arr.size)
-        {
-            arr[index++]
-        }
-        else {
-            arr[index]
-        }
-    }
-
-    override fun left(): Page {
-        return if(index > 0)
-        {
-            arr[index++]
-        }
-        else {
-            arr[index]
-        }
-    }
-
-    override fun getCurrent(): Page {
-        return arr[index]
-    }
+interface PreorderIteratorInterface : CookbookIterator {
+    var iterators: Stack<CookbookIterator>
 }
 
-class PreorderIterator(var arr: ArrayList<Page>) : Iterator {
-    override fun right() : Page {
-        val binaryRight = BinaryIterator(arr, 0)
-        val size: Int = arr.size - 1
-        var x: Int = 0
-        while (x < size) {
-            if (arr[x] is Page) {
-                binaryRight.right()
-                x++
-            } else {
-                x++
+class CategoryIterator(var arr: Category) : CookbookIterator{
+    private var atEnd: Boolean = false
+    private var index: Int = 0
+    override fun getNext() {
+        when {
+            index < arr.returnPagesCount() - 1 -> {
+                index++
+            }
+            index == arr.returnPagesCount() - 1 -> {
+                atEnd = true
+            }
+            else -> {
+                atEnd = true
             }
         }
-        return arr[x]
     }
 
-    override fun left() : Page{
-        val binaryLeft = BinaryIterator(arr, arr.size - 1)
-        val sizeLeft: Int = arr.size - 1
-        var xLeft: Int = 0
-        while (xLeft < sizeLeft) {
-            if (arr[xLeft] is Page) {
-                binaryLeft.left()
-                xLeft++
-            } else {
-                xLeft++
-            }
+    override fun isDone(): Boolean {
+        if (atEnd) {
+            return true
         }
-        return arr[xLeft]
+        return false
     }
 
-    override fun getCurrent() : Page {
-        return arr[0]
+    override fun first() {
+        index = 0
+    }
+
+    override fun current(): Page? {
+        return arr.returnPage(index)
     }
 }
+
+class PreorderIterator(var titlePage: Page?) : CookbookIterator, PreorderIteratorInterface {
+
+    override var iterators = Stack<CookbookIterator>()
+
+    override fun first(){
+        while(!iterators.isEmpty())
+        {
+            iterators.pop()
+        }
+        if(titlePage != null) {
+            val rootIterator: CookbookIterator? = titlePage?.createIterator()
+            rootIterator?.first()
+            iterators.push(rootIterator)
+        }
+    }
+
+    override fun getNext() {
+        val topIterator: CookbookIterator? = iterators.peek().current()?.createIterator()
+        topIterator?.first()
+        iterators.push(topIterator)
+        while(!iterators.isEmpty() && iterators.peek().isDone())
+        {
+            iterators.pop()
+            if(!iterators.isEmpty())
+            {
+                iterators.peek().getNext()
+            }
+        }
+    }
+
+    override fun isDone(): Boolean {
+        if (iterators.isEmpty())
+        {
+            return true
+        }
+        return false
+    }
+
+    override fun current(): Page? {
+        return iterators.peek().current()
+    }
+}
+
+class NullIterator(var titlePage: Page?) : CookbookIterator
+{
+    override fun current(): Page? {
+        return null
+    }
+
+    override fun getNext() {
+    }
+
+    override fun isDone(): Boolean {
+        return true
+    }
+
+    override fun first() {
+    }
+
+}
+
 
 
 
