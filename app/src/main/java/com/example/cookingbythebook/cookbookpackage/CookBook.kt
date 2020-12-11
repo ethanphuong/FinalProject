@@ -1,5 +1,7 @@
 package com.example.cookingbythebook.cookbookpackage
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
 import com.example.cookingbythebook.strategypackage.CompileStrategy
@@ -15,13 +17,18 @@ interface Book {
     fun returnPageCount(): Int
 }
 
-class CookBook: Book{
+class CookBook() : Book, Parcelable {
     override var titlePage: Page? = null
     override var compiler: CompileStrategy? = null
     override var pageCount = 1
 
-    constructor(bookName: String) {
+    constructor(bookName: String) : this() {
         titlePage = Category(bookName) //head page of the cookbook
+    }
+
+    constructor(parcel: Parcel) : this() {
+        titlePage = parcel.readParcelable(Category::class.java.classLoader)
+        pageCount = parcel.readInt()
     }
 
     override fun addPage(categoryName: String?, page: Page) {
@@ -44,7 +51,7 @@ class CookBook: Book{
 
                 while (!it.isDone()) {
                     // to lower page's title
-                    if (it.current() is Category) {
+                    if (it.current() != null && it.current() is Category) {
                         var _pageTitle: String? = it.current()!!.returnTitle()
                         _pageTitle?.toLowerCase()
                         
@@ -77,5 +84,24 @@ class CookBook: Book{
 
     override fun returnPageCount(): Int {
         return pageCount
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeParcelable(titlePage, flags)
+        parcel.writeInt(pageCount)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<CookBook> {
+        override fun createFromParcel(parcel: Parcel): CookBook {
+            return CookBook(parcel)
+        }
+
+        override fun newArray(size: Int): Array<CookBook?> {
+            return arrayOfNulls(size)
+        }
     }
 }

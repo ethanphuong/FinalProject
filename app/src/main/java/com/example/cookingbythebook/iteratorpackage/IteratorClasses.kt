@@ -1,7 +1,6 @@
 package com.example.cookingbythebook.iteratorpackage
 
 import com.example.cookingbythebook.compositepackage.Category
-
 import com.example.cookingbythebook.compositepackage.Page
 import java.util.*
 
@@ -46,6 +45,8 @@ class CategoryIterator(var arr: Category) : CookbookIterator{
     }
 
     override fun current(): Page? {
+        System.out.println(arr.returnTitle().toString())
+        System.out.println(index.toString())
         return arr.returnPage(index)
     }
 }

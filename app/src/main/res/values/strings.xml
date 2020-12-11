@@ -1,9 +1,33 @@
 <resources>
-    <string name="app_name">CookingbytheBook</string>
-
+    <string name="app_name">Cooking by the Book</string>
     <string name="lunch">Lunch</string>
     <string name="dinner">Dinner</string>
     <string name="breakfast">Breakfast</string>
     <string name="dessert">Dessert</string>
+    <string name="beverages">Beverages</string>
+    <string name="cookBookName">Username\'s Cook Book</string>
+    <string name="addRecipeBtn">+R</string>
+    <string name="addCategoryBtn">+C</string>
+    <string name="CategoryName">Category Name</string>
+    <string name="RecipeName">Recipe Name</string>
+    <string name="Tags">Tags</string>
+    <string name="Ingredients">Ingredients</string>
+    <string name="Instructions">Instructions</string>
+    <string name="addRecipeTitle">Add Recipe</string>
+    <string name="addCategoryTitle">Add Category</string>
+    <string name="addCategoryToCategory">Add Category to ...</string>
+    <string name="add">ADD</string>
+    <string name="delete">DELETE</string>
+    <string name="edit">EDIT</string>
+    <string name="finish">Finish</string>
+    <string name="input_information">Input information...</string>
+
+    <string name="search">Search...</string>
+
+    <string-array name="dropDownList">
+        <item>Title</item>
+        <item>Tags</item>
+        <item>Ingredients</item>
+    </string-array>
 
 </resources>
