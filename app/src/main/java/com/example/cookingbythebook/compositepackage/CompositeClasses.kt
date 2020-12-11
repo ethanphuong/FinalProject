@@ -7,7 +7,7 @@ import com.example.cookingbythebook.iteratorpackage.Iterator
 abstract class Page(protected open var title: String) : Parcelable {
     fun returnTitle(): String { return title }
     fun changeTitle(__title: String) { title = __title }
-    //abstract fun createIterator(): Iterator
+    abstract fun createIterator(): Iterator
 }
 
 class Recipe(override var title: String) : Page(title), Parcelable {
