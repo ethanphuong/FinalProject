@@ -9,23 +9,26 @@ import android.widget.EditText
 import android.widget.Toast
 
 class AddCategoryActivity : AppCompatActivity() {
-    var categoryInput: String = ""
-    var addCategoryTo: String = ""
+    private var categoryInput: String? = ""
+    private var addCategoryTo: String? = ""
+    private var categoryName: String? = ""
+    private var activityCameFrom: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_category)
 
         val bundle: Bundle? = intent.extras
-        val activityCameFrom: String? = bundle?.getString("activityCameFrom")
+        activityCameFrom = bundle?.getString("activityCameFrom").toString()
+        categoryName = bundle?.getString("categoryName").toString()
 
-
-
+        if (activityCameFrom == "Category Page Activity") {
+            val editAddCategoryTo: EditText = findViewById(R.id.editAddCategoryTo)
+            editAddCategoryTo.visibility = View.GONE
+        }
     }
 
     fun submitCategoryOnClick(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
-
         val categoryNameInput: EditText = findViewById(R.id.editCategoryName)
         val addCategoryToInput: EditText = findViewById(R.id.editAddCategoryTo)
 
@@ -33,11 +36,36 @@ class AddCategoryActivity : AppCompatActivity() {
         addCategoryTo = addCategoryToInput.text.toString()
 
         var bundle: Bundle = Bundle()
-        bundle.putString("categoryName", categoryInput)
-        bundle.putString("addCategoryTo", addCategoryTo)
-        intent.putExtras(bundle)
 
-        startActivity(intent)
+        if (activityCameFrom == "Main Activity") {
+            if (categoryInput == "" || addCategoryTo == "") {
+                Toast.makeText(this, "Please Enter a Category Name and Category to Add to", Toast.LENGTH_LONG).show()
+            }
+            else {
+                val intent = Intent(this, MainActivity::class.java)
+
+                bundle.putString("categoryInput", categoryInput)
+                bundle.putString("addCategoryTo", addCategoryTo)
+                intent.putExtras(bundle)
+
+                startActivity(intent)
+            }
+        } else if (activityCameFrom == "Category Page Activity") {
+            if (categoryInput == "") {
+                Toast.makeText(this, "Please Enter a Category Name", Toast.LENGTH_LONG).show()
+            } else {
+                val intent = Intent(this, CategoryPageActivity::class.java)
+                val activityCameFrom: String? = "Add Category Activity"
+
+                bundle.putString("activityCameFrom", activityCameFrom)
+                bundle.putString("categoryName", categoryName)
+                bundle.putString("categoryInput", categoryInput)
+                bundle.putString("addCategoryTo", addCategoryTo)
+                intent.putExtras(bundle)
+
+                startActivity(intent)
+            }
+        }
     }
 
 }

@@ -31,11 +31,14 @@ class MainActivity : AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
 
-        var categoryInput: String? = bundle?.getString("categoryName")
+        var categoryInput: String? = bundle?.getString("categoryInput")
         var addCategoryToInput: String? = bundle?.getString("addCategoryTo")
 
         var mainLinearLayout: LinearLayout? = findViewById(R.id.mainLinearLayout)
         var categoryLinearLayout: LinearLayout? = findCategoryLayout(mainLinearLayout, addCategoryToInput)
+
+        categoryInput = categoryInput?.toLowerCase()
+        categoryInput = categoryInput?.capitalize()
 
         var categoryBtn = Button(applicationContext)
         categoryBtn.setText(categoryInput)
@@ -48,6 +51,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CategoryPageActivity::class.java)
 
             var bundle: Bundle = Bundle()
+            val activityCameFrom: String = "Main Activity"
+
+            bundle.putString("activityCameFrom", activityCameFrom)
             bundle.putString("categoryName", categoryInput)
             intent.putExtras(bundle)
             startActivity(intent)
@@ -74,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            return layout
+            return null
     }
 
     //val button = findViewById<Button>(R.id.addRecipeButton)
@@ -89,7 +95,9 @@ class MainActivity : AppCompatActivity() {
 
         var bundle: Bundle = Bundle()
         val activityCameFrom: String = "Main Activity"
+        val addCategoryTo: String = ""
         bundle.putString("activityCameFrom", activityCameFrom)
+        bundle.putString("addCategoryTo", addCategoryTo)
         intent.putExtras(bundle)
 
         startActivity(intent)

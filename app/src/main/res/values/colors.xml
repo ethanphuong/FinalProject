@@ -21,6 +21,8 @@
     <color name="pink_300">#e86475</color>
     <color name="aqua_blue">#98e6c6</color>
     <color name="dark_aqua_blue">#0f3e2a</color>
+    <color name="light_blue">#92d2e2</color>
+    <color name="dark_blue">#10343d</color>
 
 
     <color name="colorPrimary">#85e0e0</color>
