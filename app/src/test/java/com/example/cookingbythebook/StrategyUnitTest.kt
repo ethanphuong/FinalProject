@@ -24,7 +24,7 @@ class StrategyUnitTest {
     }
 
     @Test
-    fun build_cook_book() {
+    fun build_cookbook_1() {
         var cookBook = CookBook("Brandon's Cook Book")
         var page1 = Recipe("Chicken Alfredo")
         var page2 = Recipe("Spaghetti")
@@ -48,7 +48,40 @@ class StrategyUnitTest {
         cookBook.addPage(categoryName1, page5)
         cookBook.addPage(categoryName1, page6)
 
-        assertEquals(cookBook.returnPageCount(), 7)
+        assertEquals(cookBook.returnPageCount(), 5)
+    }
+
+    @Test
+    fun build_cookbook_2() {
+        var cookBook = CookBook("Vy's Cook Book")
+        var page1 = Recipe("Chocolate Cake")
+        var page2 = Recipe("Red Velvet Cake")
+        var page3 = Recipe("Brownie")
+        var page4 = Recipe("Cheesecake")
+        var page5 = Recipe("Mochi Donuts")
+        var page6 = Recipe("Glazed Donuts")
+        var page7 = Recipe("Tiramisu Cake")
+        var page8 = Recipe("Chocolate Cookies")
+        var page9 = Recipe("Chocolate Ice Cream")
+        var page10 = Recipe("Vanilla Ice Cream")
+
+        //add pages to cookbook
+        var categoryName: String = "Dessert"
+        var categoryPage = Category(categoryName)
+
+        cookBook.addPage("", categoryPage)
+        cookBook.addPage(categoryName, page1)
+        cookBook.addPage(categoryName, page2)
+        cookBook.addPage(categoryName, page3)
+        cookBook.addPage(categoryName, page4)
+        cookBook.addPage(categoryName, page5)
+        cookBook.addPage(categoryName, page6)
+        cookBook.addPage(categoryName, page7)
+        cookBook.addPage(categoryName, page8)
+        cookBook.addPage(categoryName, page9)
+        cookBook.addPage(categoryName, page10)
+
+        assertEquals(cookBook.returnPageCount(), 12)
     }
 
     @Test
