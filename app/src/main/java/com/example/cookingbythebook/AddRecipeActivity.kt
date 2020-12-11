@@ -1,6 +1,5 @@
 package com.example.cookingbythebook
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -140,7 +139,7 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
         }
     }
 
-    override fun onItemClick(position: Int) { //used to know when recyclerview items have been clicked
+    override fun onItemClick(position: Int) {
         //Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show() <- use this for testing
         highlighted = when(highlighted) {
             position -> -1
@@ -148,33 +147,5 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
         }
         //findViewById<TextView>(R.id.editCategoryName).text = highlighted.toString() <- use this for testing purposes
         myAdapter.notifyItemChanged(position)
-    }
-
-    fun sendCompleteRecipe(view: View){
-        val categoryTV = findViewById<TextView>(R.id.editCategoryName)
-        val recipeTV = findViewById<TextView>(R.id.editRecipeName)
-        when {
-            categoryTV.text == "" -> {
-                Toast.makeText(this, "Please enter a category to put the recipe in.", Toast.LENGTH_SHORT).show()
-            }
-            recipeTV.text == "" -> {
-                Toast.makeText(this, "Please enter a name for the recipe.", Toast.LENGTH_SHORT).show()
-            }
-            else -> {
-                recipe.changeTitle(recipeTV.text.toString())
-
-                val bundle: Bundle? = intent.extras
-                val activityCameFrom = bundle?.getString("activityCameFrom").toString()
-
-                when(activityCameFrom) {
-                    "Main Activity" -> {
-                        val intent = Intent(this, MainActivity::class.java)
-                    }
-                    "Category Page Activity" -> {
-                        //val intent = Intent(this, )
-                    }
-                }
-            }
-        }
     }
 }
