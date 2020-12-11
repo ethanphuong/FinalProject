@@ -18,17 +18,19 @@
         android:textColor="@color/magenta_brown"
         android:textSize="30sp"
         app:backgroundTint="#bc5c79"
-        app:layout_constraintBottom_toTopOf="@+id/addRecipeBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.854" />
+
 
     <Button
         android:id="@+id/addRecipeBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/circle"
         android:fontFamily="@font/baloo"
@@ -38,9 +40,26 @@
         android:textColor="@color/red_brown"
         android:textSize="30sp"
         app:backgroundTint="@color/melon"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCategoryBtn" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/circle"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:onClick="goToSearchPage"
+        android:text="S"
+        android:textColor="@color/dark_blue"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/addCategoryBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
