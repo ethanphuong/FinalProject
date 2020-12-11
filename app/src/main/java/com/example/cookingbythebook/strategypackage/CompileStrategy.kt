@@ -2,7 +2,7 @@ package com.example.cookingbythebook.strategypackage
 
 import com.example.cookingbythebook.compositepackage.Page
 import com.example.cookingbythebook.compositepackage.Recipe
-import com.example.cookingbythebook.cookbookpackage.CookBook
+import com.example.cookingbythebook.iteratorpackage.PreorderIterator
 
 open class CompileStrategy() {
     open fun compileList(titlePage: Page?, input: String): ArrayList<Page> {return ArrayList<Page>()}
@@ -30,19 +30,19 @@ class TagCompileStrategy() : CompileStrategy() {
             if (it.current() is Recipe) {
 
                 //get size of recipe's tagsList
-                val tagsListCount: Int = it.current().returnTagsCount();
+                val tagsListCount: Int = (it.current() as Recipe).returnTagsCount();
 
                 //iterate through tag vector in a recipe page
                 for (i in 0 until tagsListCount) {
                     // get tag at an index
-                    var tag: String = it.current().returnTag(i)
+                    var tag: String = (it.current() as Recipe).returnTag(i)
 
                     //to lower tag string
                     tag = tag.toLowerCase()
 
                     //compare recipe's tag to user's input
                     if (tag == tagInput) {
-                        tagRecipeList.add(it.current())
+                        tagRecipeList.add(it.current() as Recipe)
                     }
                 }
             }
@@ -75,14 +75,14 @@ class TitleCompileStrategy() : CompileStrategy() {
             if (it.current() is Recipe) {
 
                 //page's recipe's title
-                var title: String = it.current().returnTitle()
+                var title: String = (it.current() as Recipe).returnTitle()
 
                 //to lower title
                 title = title.toLowerCase()
 
                 //compare recipe's title to user's input
                 if (title.contains(titleInput)) {
-                    titleRecipeList.add(it.current())
+                    titleRecipeList.add(it.current() as Recipe)
                 }
             }
 
@@ -114,19 +114,19 @@ class IngredientsCompileStrategy() : CompileStrategy() {
             if (it.current() is Recipe) {
 
                 //get size of recipe's ingredientsList
-                var ingredientsListCount: Int = it.returnIngredientsCount();
+                var ingredientsListCount: Int = (it.current() as Recipe).returnIngredientsCount();
 
                 //iterate through each ingredients in the recipe
                 for (i in 0 until ingredientsListCount) {
                     //get ingredient at an index
-                    var ingredient: String = it.current().returnIngredient(i)
+                    var ingredient: String = (it.current() as Recipe).returnIngredient(i)
 
                     //to lower ingredient string
                     ingredient = ingredient.toLowerCase()
 
                     //compare recipe's ingredients to user's input
                     if (ingredient == ingredientInput) {
-                        ingredientRecipeList.add(it.current())
+                        ingredientRecipeList.add(it.current() as Recipe)
                     }
                 }
 
