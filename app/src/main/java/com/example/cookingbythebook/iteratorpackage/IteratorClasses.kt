@@ -14,7 +14,7 @@ interface CookbookIterator {
 
 
 interface PreorderIteratorInterface : CookbookIterator {
-    var iterators: ArrayDeque<CookbookIterator>
+    var iterators: Stack<CookbookIterator>
 }
 
 class CategoryIterator(var arr: Category) : CookbookIterator{
@@ -52,7 +52,7 @@ class CategoryIterator(var arr: Category) : CookbookIterator{
 
 class PreorderIterator(var titlePage: Page?) : CookbookIterator, PreorderIteratorInterface {
 
-    override var iterators = ArrayDeque<CookbookIterator>()
+    override var iterators = Stack<CookbookIterator>()
 
     override fun first(){
         while(!iterators.isEmpty())
@@ -67,15 +67,15 @@ class PreorderIterator(var titlePage: Page?) : CookbookIterator, PreorderIterato
     }
 
     override fun getNext() {
-        val topIterator: CookbookIterator? = iterators.first().current()?.createIterator()
+        val topIterator: CookbookIterator? = iterators.peek().current()?.createIterator()
         topIterator?.first()
         iterators.push(topIterator)
-        while(!iterators.isEmpty() && iterators.first().isDone())
+        while(!iterators.isEmpty() && iterators.peek().isDone())
         {
             iterators.pop()
             if(!iterators.isEmpty())
             {
-                iterators.first().getNext()
+                iterators.peek().getNext()
             }
         }
     }
@@ -89,7 +89,7 @@ class PreorderIterator(var titlePage: Page?) : CookbookIterator, PreorderIterato
     }
 
     override fun current(): Page? {
-        return iterators.first().current()
+        return iterators.peek().current()
     }
 }
 

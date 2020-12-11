@@ -4,6 +4,7 @@ import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
 import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.cookbookpackage.CookBook
+import com.example.cookingbythebook.iteratorpackage.PreorderIterator
 import com.example.cookingbythebook.strategypackage.CompileStrategy
 import com.example.cookingbythebook.strategypackage.IngredientsCompileStrategy
 import com.example.cookingbythebook.strategypackage.TagCompileStrategy
@@ -19,105 +20,245 @@ import org.junit.Assert.*
  */
 class StrategyUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun test_all() {
+        build_cookbook_1()
+        build_cookbook_2()
+        build_cookbook_3()
+        build_cookbook_4()
+        title_compile_list()
+        tag_compile_list()
+        ingredient_compile_list()
     }
 
     @Test
     fun build_cookbook_1() {
-        var cookBook = CookBook("Brandon's Cook Book")
-        var page1 = Recipe("Chicken Alfredo")
-        var page2 = Recipe("Spaghetti")
-        var page3 = Recipe("Ravioli")
-        var page4 = Recipe("Green Milk Tea")
-        var page5 = Recipe("Brown Sugar Milk Tea")
-        var page6 = Recipe("Thai Tea")
+        val cookBook = CookBook("Brandon's Cook Book")
 
-        var categoryName1 = "Beverages"
-        var categoryPage1 = Category(categoryName1)
+        val category1 = Category("Italian")
+        val category2 = Category("Beverages")
+        val page1 = Recipe("Chicken Alfredo")
+        val page2 = Recipe("Spaghetti")
+        val page3 = Recipe("Ravioli")
+        val page4 = Recipe("Thai Tea")
+        val page5 = Recipe("Taro Tea")
 
-        var categoryName2 = "Italian"
-        var categoryPage2 = Category(categoryName2)
+        cookBook.addPage("", category1)
+        cookBook.addPage("", category2)
+        cookBook.addPage("Italian", page1)
+        cookBook.addPage("Italian", page2)
+        cookBook.addPage("Italian", page3)
+        cookBook.addPage("Beverages", page4)
+        cookBook.addPage("Beverages", page5)
 
-        cookBook.addPage("", categoryPage1)
-        cookBook.addPage("", categoryPage2)
-        cookBook.addPage(categoryName2, page1)
-        cookBook.addPage(categoryName2, page2)
-        cookBook.addPage(categoryName2, page3)
-        cookBook.addPage(categoryName1, page4)
-        cookBook.addPage(categoryName1, page5)
-        cookBook.addPage(categoryName1, page6)
-
-        assertEquals(cookBook.returnPageCount(), 5)
+        assertEquals(cookBook.returnPageCount(), 8)
     }
 
     @Test
     fun build_cookbook_2() {
-        var cookBook = CookBook("Vy's Cook Book")
-        var page1 = Recipe("Chocolate Cake")
-        var page2 = Recipe("Red Velvet Cake")
-        var page3 = Recipe("Brownie")
-        var page4 = Recipe("Cheesecake")
-        var page5 = Recipe("Mochi Donuts")
-        var page6 = Recipe("Glazed Donuts")
-        var page7 = Recipe("Tiramisu Cake")
-        var page8 = Recipe("Chocolate Cookies")
-        var page9 = Recipe("Chocolate Ice Cream")
-        var page10 = Recipe("Vanilla Ice Cream")
+        val cookBook = CookBook("Vy's Cook Book")
+        val page1 = Recipe("Chocolate Cake")
+        val page2 = Recipe("Red Velvet Cake")
+        val page3 = Recipe("Brownie")
+        val page4 = Recipe("Cheesecake")
+        val page5 = Recipe("Mochi Donuts")
+        val page6 = Recipe("Glazed Donuts")
+        val page7 = Recipe("Tiramisu Cake")
+        val page8 = Recipe("Chocolate Cookies")
+        val page9 = Recipe("Chocolate Ice Cream")
+        val page10 = Recipe("Vanilla Ice Cream")
 
         //add pages to cookbook
-        var categoryName: String = "Dessert"
-        var categoryPage = Category(categoryName)
+        val categoryPage = Category("Dessert")
 
         cookBook.addPage("", categoryPage)
-        cookBook.addPage(categoryName, page1)
-        cookBook.addPage(categoryName, page2)
-        cookBook.addPage(categoryName, page3)
-        cookBook.addPage(categoryName, page4)
-        cookBook.addPage(categoryName, page5)
-        cookBook.addPage(categoryName, page6)
-        cookBook.addPage(categoryName, page7)
-        cookBook.addPage(categoryName, page8)
-        cookBook.addPage(categoryName, page9)
-        cookBook.addPage(categoryName, page10)
+        cookBook.addPage("Dessert", page1)
+        cookBook.addPage("Dessert", page2)
+        cookBook.addPage("Dessert", page3)
+        cookBook.addPage("Dessert", page4)
+        cookBook.addPage("Dessert", page5)
+        cookBook.addPage("Dessert", page6)
+        cookBook.addPage("Dessert", page7)
+        cookBook.addPage("Dessert", page8)
+        cookBook.addPage("Dessert", page9)
+        cookBook.addPage("Dessert", page10)
 
         assertEquals(cookBook.returnPageCount(), 12)
     }
 
     @Test
+    fun build_cookbook_3() {
+        val cookBook = CookBook("Vy's Cook Book")
+
+        val category1 = Category("Dinner")
+        val category2 = Category("Beverages")
+        val category3 = Category("Dessert")
+
+        val page1 = Recipe("Supreme Pizza")
+        page1.addTag("Italian")
+        page1.addTag("cheesy")
+
+        val page2 = Recipe("Red Velvet Cake")
+        page2.addTag("dessert")
+        page2.addTag("cake")
+
+        val page3 = Recipe("Spaghetti")
+        page3.addTag("Italian")
+        page3.addTag("pasta")
+
+        val page4 = Recipe("Macaroni and Cheese")
+        page4.addTag("pasta")
+        page4.addTag("cheesy")
+
+        val page5 = Recipe("Mochi Donuts")
+        page5.addTag("dessert")
+        page5.addTag("donuts")
+
+        val page6 = Recipe("Iced Americano")
+        page6.addTag("coffee")
+        page6.addTag("drinks")
+
+        val page7 = Recipe("Lasagna")
+        page7.addTag("Italian")
+        page7.addTag("pasta")
+        page7.addTag("cheesy")
+
+        val page8 = Recipe("Vanilla Latte")
+        page8.addTag("drinks")
+        page8.addTag("coffee")
+
+        val page9 = Recipe("Cheese Foam Green Tea")
+        page9.addTag("drinks")
+        page9.addTag("cheesy")
+        page9.addTag("tea")
+
+        val page10 = Recipe("Caramel Macchiato")
+        page10.addTag("coffee")
+        page10.addTag("drinks")
+
+        val page11 = Recipe("Cheesecake")
+        page11.addTag("dessert")
+        page11.addTag("cheesy")
+
+        cookBook.addPage("", category1)
+        cookBook.addPage("", category2)
+        cookBook.addPage("", category3)
+        cookBook.addPage("Dinner", page1)
+        cookBook.addPage("Beverages", page2)
+        cookBook.addPage("Dinner", page3)
+        cookBook.addPage("Dinner", page4)
+        cookBook.addPage("Dessert", page5)
+        cookBook.addPage("Beverages", page6)
+        cookBook.addPage("Dinner", page7)
+        cookBook.addPage("Beverages", page8)
+        cookBook.addPage("Beverages", page9)
+        cookBook.addPage("Beverages", page10)
+        cookBook.addPage("Dessert", page11)
+
+        assertEquals(cookBook.returnPageCount(), 15)
+    }
+
+    @Test
+    fun build_cookbook_4() {
+        val cookBook: CookBook = CookBook("Vy's Cook Book")
+
+        val category1 = Category("Dessert")
+        val category2 = Category("Dinner")
+
+        val page1 = Recipe("Supreme Pizza")
+        page1.addIngredient("dough")
+        page1.addIngredient("tomato")
+        page1.addIngredient("cheese")
+        page1.addIngredient("bell pepper")
+        page1.addIngredient("olive")
+        page1.addIngredient("sausages")
+        page1.addIngredient("pepperoni")
+
+        val page2 = Recipe("Red Velvet Cake")
+        page2.addIngredient("eggs")
+        page2.addIngredient("flour")
+        page2.addIngredient("baking soda")
+        page2.addIngredient("cocoa powder")
+        page2.addIngredient("sugar")
+
+        val page3: Recipe = Recipe("Spaghetti")
+        page3.addIngredient("noodles")
+        page3.addIngredient("tomato")
+        page3.addIngredient("sausage")
+        page3.addIngredient("meatball")
+
+        val page4 = Recipe("Macaroni and Cheese")
+        page4.addIngredient("macaroni")
+        page4.addIngredient("cheese")
+        page3.addIngredient("salt")
+
+        val page5 = Recipe("Mochi Donuts")
+        page5.addIngredient("rice flour")
+        page5.addIngredient("sugar")
+        page5.addIngredient("tofu")
+        page5.addIngredient("milk")
+        page5.addIngredient("eggs")
+
+        val page6 = Recipe("Lasagna")
+        page6.addIngredient("pasta")
+        page6.addIngredient("ground beef")
+        page6.addIngredient("cheese")
+        page6.addIngredient("tomato")
+        page6.addIngredient("cheese")
+
+        val page7 = Recipe("Ravioli")
+        page7.addIngredient("pasta")
+        page7.addIngredient("cheese")
+        page7.addIngredient("ground beef")
+        page7.addIngredient("tomato")
+
+        cookBook.addPage("", category1)
+        cookBook.addPage("", category2)
+        cookBook.addPage("Dinner", page1)
+        cookBook.addPage("Dessert", page2)
+        cookBook.addPage("Dinner", page3)
+        cookBook.addPage("Dinner", page4)
+        cookBook.addPage("Dessert", page5)
+        cookBook.addPage("Dessert", page6)
+        cookBook.addPage("Dinner", page7)
+
+        assertEquals(cookBook.returnPageCount(), 10)
+    }
+
+    @Test
     fun title_compile_list() {
-        var cookBook = CookBook("Vy's Cook Book")
-        var page1 = Recipe("Chocolate Cake")
-        var page2 = Recipe("Red Velvet Cake")
-        var page3 = Recipe("Brownie")
-        var page4 = Recipe("Cheesecake")
-        var page5 = Recipe("Mochi Donuts")
-        var page6 = Recipe("Glazed Donuts")
-        var page7 = Recipe("Tiramisu Cake")
-        var page8 = Recipe("Chocolate Cookies")
-        var page9 = Recipe("Chocolate Ice Cream")
-        var page10 = Recipe("Vanilla Ice Cream")
+        val cookBook = CookBook("Vy's Cook Book")
+        val page1 = Recipe("Chocolate Cake")
+        val page2 = Recipe("Red Velvet Cake")
+        val page3 = Recipe("Brownie")
+        val page4 = Recipe("Cheesecake")
+        val page5 = Recipe("Mochi Donuts")
+        val page6 = Recipe("Glazed Donuts")
+        val page7 = Recipe("Tiramisu Cake")
+        val page8 = Recipe("Chocolate Cookies")
+        val page9 = Recipe("Chocolate Ice Cream")
+        val page10 = Recipe("Vanilla Ice Cream")
 
         //add pages to cookbook
-        var categoryName: String = "Dessert"
-        var categoryPage = Category(categoryName)
+        val categoryPage = Category("Dessert")
         cookBook.addPage("", categoryPage)
-        cookBook.addPage(categoryName, page1)
-        cookBook.addPage(categoryName, page2)
-        cookBook.addPage(categoryName, page3)
-        cookBook.addPage(categoryName, page4)
-        cookBook.addPage(categoryName, page5)
-        cookBook.addPage(categoryName, page6)
-        cookBook.addPage(categoryName, page7)
-        cookBook.addPage(categoryName, page8)
-        cookBook.addPage(categoryName, page9)
-        cookBook.addPage(categoryName, page10)
+        cookBook.addPage("Dessert", page1)
+        cookBook.addPage("Dessert", page2)
+        cookBook.addPage("Dessert", page3)
+        cookBook.addPage("Dessert", page4)
+        cookBook.addPage("Dessert", page5)
+        cookBook.addPage("Dessert", page6)
+        cookBook.addPage("Dessert", page7)
+        cookBook.addPage("Dessert", page8)
+        cookBook.addPage("Dessert", page9)
+        cookBook.addPage("Dessert", page10)
 
-        var titleStrategy: CompileStrategy = TitleCompileStrategy()
+        val titleStrategy: CompileStrategy = TitleCompileStrategy()
         cookBook.setListCompiler(titleStrategy)
 
-        var searchInput: String = "Cake"
-        var titleList: ArrayList<Page> = cookBook.compile(searchInput)
+        val searchInput: String = "Cake"
+        val titleList: ArrayList<Page> = cookBook.compile(searchInput)
+
+        assertEquals(cookBook.returnPageCount(), 12)
 
         assertEquals(titleList.get(0).returnTitle(), "Chocolate Cake")
         assertEquals(titleList.get(1).returnTitle(), "Red Velvet Cake")
@@ -128,86 +269,82 @@ class StrategyUnitTest {
 
     @Test
     fun tag_compile_list() {
-        var cookBook: CookBook = CookBook("Vy's Cook Book")
+        val cookBook = CookBook("Vy's Cook Book")
 
-        var page1 = Recipe("Supreme Pizza")
+        val category1 = Category("Dinner")
+        val category2 = Category("Beverages")
+        val category3 = Category("Dessert")
+
+        val page1 = Recipe("Supreme Pizza")
         page1.addTag("Italian")
         page1.addTag("cheesy")
 
-        var page2 = Recipe("Red Velvet Cake")
+        val page2 = Recipe("Red Velvet Cake")
         page2.addTag("dessert")
         page2.addTag("cake")
 
-        var page3 = Recipe("Spaghetti")
+        val page3 = Recipe("Spaghetti")
         page3.addTag("Italian")
         page3.addTag("pasta")
 
-        var page4 = Recipe("Macaroni and Cheese")
+        val page4 = Recipe("Macaroni and Cheese")
         page4.addTag("pasta")
         page4.addTag("cheesy")
 
-        var page5 = Recipe("Mochi Donuts")
+        val page5 = Recipe("Mochi Donuts")
         page5.addTag("dessert")
         page5.addTag("donuts")
 
-        var page6 = Recipe("Iced Americano")
+        val page6 = Recipe("Iced Americano")
         page6.addTag("coffee")
         page6.addTag("drinks")
 
-        var page7 = Recipe("Lasagna")
+        val page7 = Recipe("Lasagna")
         page7.addTag("Italian")
         page7.addTag("pasta")
         page7.addTag("cheesy")
 
-        var page8 = Recipe("Vanilla Latte")
+        val page8 = Recipe("Vanilla Latte")
         page8.addTag("drinks")
         page8.addTag("coffee")
 
-        var page9 = Recipe("Cheese Foam Green Tea")
+        val page9 = Recipe("Cheese Foam Green Tea")
         page9.addTag("drinks")
         page9.addTag("cheesy")
         page9.addTag("tea")
 
-        var page10 = Recipe("Caramel Macchiato")
+        val page10 = Recipe("Caramel Macchiato")
         page10.addTag("coffee")
         page10.addTag("drinks")
 
-        var page11 = Recipe("Cheesecake")
+        val page11 = Recipe("Cheesecake")
         page11.addTag("dessert")
         page11.addTag("cheesy")
 
-        var categoryName1: String = "Dessert"
-        var categoryPage1 = Category(categoryName1)
+        cookBook.addPage("", category1)
+        cookBook.addPage("", category2)
+        cookBook.addPage("", category3)
+        cookBook.addPage("Dinner", page1)
+        cookBook.addPage("Beverages", page2)
+        cookBook.addPage("Dinner", page3)
+        cookBook.addPage("Dinner", page4)
+        cookBook.addPage("Dessert", page5)
+        cookBook.addPage("Beverages", page6)
+        cookBook.addPage("Dinner", page7)
+        cookBook.addPage("Beverages", page8)
+        cookBook.addPage("Beverages", page9)
+        cookBook.addPage("Beverages", page10)
+        cookBook.addPage("Dessert", page11)
 
-        var categoryName2: String = "Beverages"
-        var categoryPage2 = Category(categoryName2)
-
-        var categoryName3: String = "Dinner"
-        var categoryPage3 = Category(categoryName3)
-
-        cookBook.addPage("", categoryPage1)
-        cookBook.addPage("", categoryPage2)
-        cookBook.addPage("", categoryPage3)
-
-        cookBook.addPage(categoryName3, page1)
-        cookBook.addPage(categoryName1, page2)
-        cookBook.addPage(categoryName3, page3)
-        cookBook.addPage(categoryName3, page4)
-        cookBook.addPage(categoryName1, page5)
-        cookBook.addPage(categoryName2, page6)
-        cookBook.addPage(categoryName3, page7)
-        cookBook.addPage(categoryName2, page8)
-        cookBook.addPage(categoryName2, page9)
-        cookBook.addPage(categoryName2, page10)
-        cookBook.addPage(categoryName1, page11)
-
-        var tagStrategy: CompileStrategy = TagCompileStrategy()
+        val tagStrategy: CompileStrategy = TagCompileStrategy()
         cookBook.setListCompiler(tagStrategy)
 
-        var searchInput: String = "cheesy"
-        var tagList: ArrayList<Page> = cookBook.compile(searchInput)
+        val searchInput: String = "cheesy"
+        val tagList: ArrayList<Page> = cookBook.compile(searchInput)
 
-        assertEquals(tagList.get(0).returnTitle(), "Pizza")
+        assertEquals(cookBook.returnPageCount(), 15)
+
+        assertEquals(tagList.get(0).returnTitle(), "Supreme Pizza")
         assertEquals(tagList.get(1).returnTitle(), "Macaroni and Cheese")
         assertEquals(tagList.get(2).returnTitle(), "Lasagna")
         assertEquals(tagList.get(3).returnTitle(), "Cheese Foam Green Tea")
@@ -216,9 +353,12 @@ class StrategyUnitTest {
 
     @Test
     fun ingredient_compile_list() {
-        var cookBook: CookBook = CookBook("Vy's Cook Book")
+        val cookBook: CookBook = CookBook("Vy's Cook Book")
 
-        var page1 = Recipe("Supreme Pizza")
+        val category1 = Category("Dessert")
+        val category2 = Category("Dinner")
+
+        val page1 = Recipe("Supreme Pizza")
         page1.addIngredient("dough")
         page1.addIngredient("tomato")
         page1.addIngredient("cheese")
@@ -227,69 +367,66 @@ class StrategyUnitTest {
         page1.addIngredient("sausages")
         page1.addIngredient("pepperoni")
 
-        var page2 = Recipe("Red Velvet Cake")
+        val page2 = Recipe("Red Velvet Cake")
         page2.addIngredient("eggs")
         page2.addIngredient("flour")
         page2.addIngredient("baking soda")
         page2.addIngredient("cocoa powder")
         page2.addIngredient("sugar")
 
-        var page3: Recipe = Recipe("Spaghetti")
+        val page3: Recipe = Recipe("Spaghetti")
         page3.addIngredient("noodles")
         page3.addIngredient("tomato")
         page3.addIngredient("sausage")
         page3.addIngredient("meatball")
 
-        var page4 = Recipe("Macaroni and Cheese")
+        val page4 = Recipe("Macaroni and Cheese")
         page4.addIngredient("macaroni")
         page4.addIngredient("cheese")
         page3.addIngredient("salt")
 
-        var page5 = Recipe("Mochi Donuts")
+        val page5 = Recipe("Mochi Donuts")
         page5.addIngredient("rice flour")
         page5.addIngredient("sugar")
         page5.addIngredient("tofu")
         page5.addIngredient("milk")
         page5.addIngredient("eggs")
 
-        var page6 = Recipe("Lasagna")
+        val page6 = Recipe("Lasagna")
         page6.addIngredient("pasta")
         page6.addIngredient("ground beef")
         page6.addIngredient("cheese")
         page6.addIngredient("tomato")
         page6.addIngredient("cheese")
 
-        var page7 = Recipe("Ravioli")
+        val page7 = Recipe("Ravioli")
         page7.addIngredient("pasta")
         page7.addIngredient("cheese")
         page7.addIngredient("ground beef")
         page7.addIngredient("tomato")
 
-        var categoryName1: String = "Dessert"
-        var categoryPage1 = Category(categoryName1)
+        cookBook.addPage("", category1)
+        cookBook.addPage("", category2)
+        cookBook.addPage("Dinner", page1)
+        cookBook.addPage("Dessert", page2)
+        cookBook.addPage("Dinner", page3)
+        cookBook.addPage("Dinner", page4)
+        cookBook.addPage("Dessert", page5)
+        cookBook.addPage("Dinner", page6)
+        cookBook.addPage("Dinner", page7)
 
-        var categoryName2: String = "Dinner"
-        var categoryPage2 = Category(categoryName2)
-
-        cookBook.addPage("", categoryPage1)
-        cookBook.addPage("", categoryPage2)
-        cookBook.addPage(categoryName2, page1)
-        cookBook.addPage(categoryName1, page2)
-        cookBook.addPage(categoryName2, page3)
-        cookBook.addPage(categoryName2, page4)
-        cookBook.addPage(categoryName1, page5)
-        cookBook.addPage(categoryName2, page6)
-        cookBook.addPage(categoryName2, page7)
-
-        var ingredientStrategy: CompileStrategy = IngredientsCompileStrategy()
+        val ingredientStrategy: CompileStrategy = IngredientsCompileStrategy()
         cookBook.setListCompiler(ingredientStrategy)
 
-        var searchInput: String = "tomato"
-        var tagList: ArrayList<Page> = cookBook.compile(searchInput)
+        val searchInput: String = "tomato"
+        val tagList: ArrayList<Page> = cookBook.compile(searchInput)
 
-        assertEquals(tagList.get(0).returnTitle(), "Pizza")
+        assertEquals(cookBook.returnPageCount(), 10)
+
+        assertEquals(tagList.get(0).returnTitle(), "Supreme Pizza")
         assertEquals(tagList.get(1).returnTitle(), "Spaghetti")
         assertEquals(tagList.get(2).returnTitle(), "Lasagna")
         assertEquals(tagList.get(3).returnTitle(), "Ravioli")
     }
+
 }

@@ -41,7 +41,7 @@ class Category(override var title: String) : Page(title) {
     fun returnPage(loc: Int): Page { return pages[loc] }
     fun returnPagesCount(): Int { return pages.count() }
   
-    override fun createIterator(): Iterator {
+    override fun createIterator(): CookbookIterator {
         return if(returnPagesCount() > 0) {
             CategoryIterator(this)
         }

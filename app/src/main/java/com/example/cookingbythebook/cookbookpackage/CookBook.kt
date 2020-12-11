@@ -9,7 +9,7 @@ interface Book {
     var titlePage: Page?
     var compiler: CompileStrategy?
     var pageCount: Int
-    fun addPage(categoryName: String, page: Page)
+    fun addPage(categoryName: String?, page: Page)
     fun setListCompiler(_compiler: CompileStrategy)
     fun compile(searchInput: String): ArrayList<Page>
     fun returnPageCount(): Int
@@ -24,7 +24,7 @@ class CookBook: Book{
         titlePage = Category(bookName) //head page of the cookbook
     }
 
-    override fun addPage(categoryName: String, page: Page) {
+    override fun addPage(categoryName: String?, page: Page) {
         //to lower category name
         if (categoryName == "") {
             if (titlePage is Category) {
@@ -33,25 +33,29 @@ class CookBook: Book{
                 return
             }
         }
+        else {
 
-        var _categoryName: String = categoryName
-        _categoryName.toLowerCase()
+            var _categoryName: String? = categoryName
+            _categoryName?.toLowerCase()
 
-        if (titlePage != null) {
-            var it = PreorderIterator(titlePage)
-            it.first()
+            if (titlePage != null) {
+                var it = PreorderIterator(titlePage)
+                it.first()
 
-            while (!it.isDone()) {
-                // to lower page's title
-                var _pageTitle: String? = it.current()?.returnTitle()
-                _pageTitle?.toLowerCase()
-
-                if (it.current() is Category && _pageTitle == _categoryName) {
-                    (it.current() as Category).addPage(page)
-                    pageCount++
-                    return
+                while (!it.isDone()) {
+                    // to lower page's title
+                    if (it.current() is Category) {
+                        var _pageTitle: String? = it.current()!!.returnTitle()
+                        _pageTitle?.toLowerCase()
+                        
+                        if (it.current() is Category && _pageTitle == _categoryName) {
+                            (it.current() as Category).addPage(page)
+                            pageCount++
+                            return
+                        }
+                    }
+                    it.getNext()
                 }
-                it.getNext()
             }
         }
     }

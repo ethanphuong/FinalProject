@@ -164,6 +164,6 @@ class ThirdUnitTest{
         assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
         assertEquals(testPreorderIterator.isDone(), true)
 
-
+        assertEquals(testPreorder.returnPageCount(), 7)
     }
 }

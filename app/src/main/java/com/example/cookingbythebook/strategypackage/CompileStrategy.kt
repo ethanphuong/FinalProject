@@ -33,9 +33,9 @@ class TagCompileStrategy() : CompileStrategy() {
                 val tagsListCount: Int = (it.current() as Recipe).returnTagsCount();
 
                 //iterate through tag vector in a recipe page
-                for (i in 0 until tagsListCount) {
+                for (i in 1..tagsListCount) {
                     // get tag at an index
-                    var tag: String = (it.current() as Recipe).returnTag(i)
+                    var tag: String = (it.current() as Recipe).returnTag(i-1)
 
                     //to lower tag string
                     tag = tag.toLowerCase()
@@ -117,9 +117,9 @@ class IngredientsCompileStrategy() : CompileStrategy() {
                 var ingredientsListCount: Int = (it.current() as Recipe).returnIngredientsCount();
 
                 //iterate through each ingredients in the recipe
-                for (i in 0 until ingredientsListCount) {
+                for (i in 1..ingredientsListCount) {
                     //get ingredient at an index
-                    var ingredient: String = (it.current() as Recipe).returnIngredient(i)
+                    var ingredient: String = (it.current() as Recipe).returnIngredient(i-1)
 
                     //to lower ingredient string
                     ingredient = ingredient.toLowerCase()
@@ -129,9 +129,8 @@ class IngredientsCompileStrategy() : CompileStrategy() {
                         ingredientRecipeList.add(it.current() as Recipe)
                     }
                 }
-
-                it.getNext()
             }
+            it.getNext()
         }
 
         return ingredientRecipeList
