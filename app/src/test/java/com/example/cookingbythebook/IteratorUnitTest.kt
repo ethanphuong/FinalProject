@@ -1,5 +1,6 @@
 package com.example.cookingbythebook
 
+import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.cookbookpackage.CookBook
 import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.iteratorpackage.CookbookIterator
@@ -106,13 +107,13 @@ class ThirdUnitTest{
         val testPreorder: CookBook = CookBook("Second Cookbook")
         val preOrderCookbook = testPreorder.titlePage
 
-        val category1 = Recipe("Category 1")
+        val category1 = Category("Category 1")
         val page2 = Recipe("Page 2")
         val page3 = Recipe("Page 3")
 
         testPreorder.addPage("", category1)
-        testPreorder.addPage("", page2)
-        testPreorder.addPage("", page3)
+        testPreorder.addPage("Category 1", page2)
+        testPreorder.addPage("Category 1", page3)
 
         val testPreorderIterator: PreorderIterator = PreorderIterator(preOrderCookbook)
 
@@ -126,4 +127,43 @@ class ThirdUnitTest{
         assertEquals(testPreorderIterator.isDone(), true)
     }
 
+    fun testPreorder2(){
+
+        val testPreorder: CookBook = CookBook("Second Cookbook")
+        val preOrderCookbook = testPreorder.titlePage
+
+        val category1 = Category("Category 1")
+        val page2 = Recipe("Page 2")
+        val page3 = Recipe("Page 3")
+        val category2 = Category("Category 2")
+        val page4 = Recipe("Page 4")
+        val page5 = Recipe("Page 5")
+
+        testPreorder.addPage("", category1)
+        testPreorder.addPage("Category 1", page2)
+        testPreorder.addPage("Category 1", page3)
+        testPreorder.addPage("", category2)
+        testPreorder.addPage("Category 2", page4)
+        testPreorder.addPage("Category 2", page5)
+
+        val testPreorderIterator: PreorderIterator = PreorderIterator(preOrderCookbook)
+
+        assertEquals(testPreorderIterator.first(), kotlin.Unit)
+        assertEquals(testPreorderIterator.current(), category1)
+        assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
+        assertEquals(testPreorderIterator.current(), page2)
+        assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
+        assertEquals(testPreorderIterator.current(), page3)
+        assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
+
+        assertEquals(testPreorderIterator.current(), category2)
+        assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
+        assertEquals(testPreorderIterator.current(), page4)
+        assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
+        assertEquals(testPreorderIterator.current(), page5)
+        assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
+        assertEquals(testPreorderIterator.isDone(), true)
+
+
+    }
 }
