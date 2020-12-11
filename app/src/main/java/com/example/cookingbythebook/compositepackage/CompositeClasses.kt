@@ -15,6 +15,11 @@ class Recipe(override var title: String) : Page(title) {
     private var ingredients = ArrayList<String>()
     private var instructions = ArrayList<String>()
 
+    constructor(_title: String, _tags: ArrayList<String>, _ingredients: ArrayList<String>, _instructions: ArrayList<String>) : this(_title) {
+        tags = _tags
+        ingredients = _ingredients
+        instructions = _instructions
+    }
     constructor(parcel: Parcel) : this(parcel.readString().toString()) {
 
     }

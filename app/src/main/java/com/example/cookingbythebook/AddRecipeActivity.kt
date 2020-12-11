@@ -162,16 +162,19 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
                 var bundle: Bundle = Bundle()
                 bundle.putString("activityCameFrom", "Add Recipe Category")
+                bundle.putString("addCategoryTo", categoryTV.text.toString())
 
                 when(prevActivity){
                     "Main Activity" -> {
                         val intent = Intent(this, MainActivity::class.java)
                         intent.putExtra("recipe", recipe)
+                        intent.putExtras(bundle)
                         startActivity(intent)
                     }
                     "Category Page Activity" -> {
                         val intent = Intent(this, AddCategoryActivity::class.java)
                         intent.putExtra("recipe", recipe)
+                        intent.putExtras(bundle)
                         startActivity(intent)
                     }
                     else -> {}
