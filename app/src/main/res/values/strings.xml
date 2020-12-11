@@ -19,4 +19,11 @@
     <string name="add">ADD</string>
     <string name="delete">DELETE</string>
     <string name="edit">EDIT</string>
+    <string name="search">Search...</string>
+
+    <string-array name="dropDownList">
+        <item>Title</item>
+        <item>Tags</item>
+        <item>Ingredients</item>
+    </string-array>
 </resources>

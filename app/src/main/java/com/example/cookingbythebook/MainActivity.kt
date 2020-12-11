@@ -103,4 +103,16 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+    fun goToSearchPage(view: View) {
+        val intent = Intent(this, SearchRecipeActivity::class.java)
+
+        var bundle: Bundle = Bundle()
+        val activityCameFrom: String = "Main Activity"
+        bundle.putString("activityCameFrom", activityCameFrom)
+
+        intent.putExtras(bundle)
+
+        startActivity(intent)
+    }
 }
