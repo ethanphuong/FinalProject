@@ -21,4 +21,13 @@
     <string name="edit">EDIT</string>
     <string name="finish">Finish</string>
     <string name="input_information">Input information...</string>
+
+    <string name="search">Search...</string>
+
+    <string-array name="dropDownList">
+        <item>Title</item>
+        <item>Tags</item>
+        <item>Ingredients</item>
+    </string-array>
+
 </resources>
