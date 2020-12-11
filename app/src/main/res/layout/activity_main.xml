@@ -25,11 +25,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.854" />
 
+
     <Button
         android:id="@+id/addRecipeBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/circle"
         android:fontFamily="@font/baloo"
         android:gravity="center"
@@ -95,7 +97,7 @@
                     android:id="@+id/breakfastLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:orientation="vertical" />
+                    android:orientation="vertical"/>
             </ScrollView>
 
             <TextView
@@ -181,7 +183,7 @@
             <ScrollView
                 android:id="@+id/beveragesScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="500dp">
 
                 <LinearLayout
                     android:id="@+id/beveragesLinearLayout"

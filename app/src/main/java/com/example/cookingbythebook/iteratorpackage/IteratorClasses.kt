@@ -1,7 +1,6 @@
 package com.example.cookingbythebook.iteratorpackage
 
 import com.example.cookingbythebook.compositepackage.Category
-
 import com.example.cookingbythebook.compositepackage.Page
 import java.util.*
 

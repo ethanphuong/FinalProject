@@ -40,7 +40,7 @@ class Category(override var title: String) : Page(title) {
     fun removePage(__page:Page) { pages.remove(__page) }
     fun returnPage(loc: Int): Page { return pages[loc] }
     fun returnPagesCount(): Int { return pages.count() }
-  
+
     override fun createIterator(): CookbookIterator {
         return if(returnPagesCount() > 0) {
             CategoryIterator(this)
