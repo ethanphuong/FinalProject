@@ -75,6 +75,8 @@
  > Screenshots of the input/output after running your application
  ## Installation/Usage
  > Instructions on installing and running your application
+ > For installation, you can clone this github repository and run it on Android Studio on an emulator. You can also connect your phone to Android Studio by changing your phone's settings to developer mode and installing the application through Android Studio.
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ > We used JUnit tests as a part of our project in order to check if our backend and algorithm was functioning properly. We also used an emulator to test the ui/ux of the application and the functionality of it.
  
