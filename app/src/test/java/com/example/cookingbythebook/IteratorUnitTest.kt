@@ -126,23 +126,23 @@ class ThirdUnitTest{
         assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
         assertEquals(testPreorderIterator.isDone(), true)
     }
-
+    @Test
     fun testPreorder2(){
 
         val testPreorder: CookBook = CookBook("Second Cookbook")
         val preOrderCookbook = testPreorder.titlePage
 
         val category1 = Category("Category 1")
+        val category2 = Category("Category 2")
         val page2 = Recipe("Page 2")
         val page3 = Recipe("Page 3")
-        val category2 = Category("Category 2")
         val page4 = Recipe("Page 4")
         val page5 = Recipe("Page 5")
 
         testPreorder.addPage("", category1)
+        testPreorder.addPage("", category2)
         testPreorder.addPage("Category 1", page2)
         testPreorder.addPage("Category 1", page3)
-        testPreorder.addPage("", category2)
         testPreorder.addPage("Category 2", page4)
         testPreorder.addPage("Category 2", page5)
 
