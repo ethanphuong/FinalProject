@@ -165,7 +165,7 @@ class AddRecipeActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
                 var bundle: Bundle = Bundle()
                 bundle.putString("activityCameFrom", "Add Recipe Category")
-                //bundle.putString("addCategoryTo", categoryTV.text.toString())
+                bundle.putString("addCategoryTo", categoryTV.text.toString())
                 bundle.putString("categoryName", categoryTV.text.toString())
 
                 recipe.changeTitle(recipeTV.text.toString())
