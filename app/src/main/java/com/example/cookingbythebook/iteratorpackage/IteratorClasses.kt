@@ -1,8 +1,10 @@
 package com.example.cookingbythebook.iteratorpackage
 
-import java.util.Stack
+import com.example.cookingbythebook.compositepackage.Category
 
 import com.example.cookingbythebook.compositepackage.Page
+import com.example.cookingbythebook.cookbookpackage.CookBook
+import java.util.*
 
 interface CookbookIterator {
     fun getNext()
@@ -15,24 +17,19 @@ interface CategoryIteratorInterface : CookbookIterator{
 }
 
 interface PreorderIteratorInterface : CookbookIterator {
-    var iterators: Stack<CookbookIterator>
+    var iterators: ArrayDeque<CookbookIterator>
 }
 
-class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : CookbookIterator, CategoryIteratorInterface {
+class CategoryIterator(var arr: Category) : CookbookIterator, CategoryIteratorInterface {
 
     override var atEnd: Boolean = false
-
-    constructor(){
-        index = 0
-    }
+    private var index: Int = 0
     override fun getNext() {
         when {
-            index < arr.size -> {
-                var temp: Int = index
-                temp += 1
-                index = temp
+            index < arr.returnPagesCount() -> {
+                index++
             }
-            index == arr.size - 1 -> {
+            index == arr.returnPagesCount() - 1 -> {
                 atEnd = true
             }
             else -> {
@@ -42,8 +39,7 @@ class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : CookbookIter
     }
 
     override fun isDone(): Boolean {
-        if(atEnd)
-        {
+        if (atEnd) {
             return true
         }
         return false
@@ -54,48 +50,46 @@ class CategoryIterator(var arr: ArrayList<Page>, var index : Int) : CookbookIter
     }
 
     override fun current(): Page? {
-        return arr[index]
+        return arr.returnPage(index)
     }
 }
 
 class PreorderIterator(var titlePage: Page?) : CookbookIterator, PreorderIteratorInterface {
 
-    override var iterators: Stack<CookbookIterator> = Stack<CookbookIterator>()
-
-    constructor(){
-        iterators = Stack<CookbookIterator>()
-    }
+    override var iterators = ArrayDeque<CookbookIterator>()
 
     override fun first(){
-        while(!iterators.empty())
+        while(!iterators.isEmpty())
         {
             iterators.pop()
         }
-        val rootIterator = titlePage?.createIterator()
-        rootIterator?.first()
-        iterators.push(rootIterator)
+        if(titlePage != null) {
+            val rootIterator: CookbookIterator? = titlePage?.createIterator()
+            rootIterator?.first()
+            iterators.push(rootIterator)
+        }
     }
 
     override fun getNext() {
-        val topIterator: CookbookIterator? = iterators.peek().current()?.createIterator()
+        val topIterator: CookbookIterator? = iterators.first().current()?.createIterator()
         topIterator?.first()
         iterators.push(topIterator)
-        while(!iterators.empty() && iterators.peek().isDone())
+        while(!iterators.isEmpty() && iterators.first().isDone())
         {
             iterators.pop()
-            if(!iterators.empty())
+            if(!iterators.isEmpty())
             {
-                iterators.peek().getNext()
+                iterators.first().getNext()
             }
         }
     }
 
     override fun isDone(): Boolean {
-        return iterators.empty()
+        return iterators.isEmpty()
     }
 
     override fun current(): Page? {
-        return iterators.peek().current()
+        return iterators.first().current()
     }
 }
 
@@ -116,6 +110,7 @@ class NullIterator(var titlePage: Page?) : CookbookIterator
     }
 
 }
+
 
 
 

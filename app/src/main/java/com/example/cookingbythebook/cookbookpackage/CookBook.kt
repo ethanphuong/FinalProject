@@ -2,8 +2,8 @@ package com.example.cookingbythebook.cookbookpackage
 
 import com.example.cookingbythebook.compositepackage.Category
 import com.example.cookingbythebook.compositepackage.Page
-import com.example.cookingbythebook.compositepackage.Recipe
 import com.example.cookingbythebook.strategypackage.CompileStrategy
+import com.example.cookingbythebook.iteratorpackage.PreorderIterator
 
 interface Book {
     var titlePage: Page?
@@ -43,11 +43,11 @@ class CookBook: Book{
 
             while (!it.isDone()) {
                 // to lower page's title
-                var _pageTitle: String = it.current().returnTitle()
-                _pageTitle.toLowerCase()
+                var _pageTitle: String? = it.current()?.returnTitle()
+                _pageTitle?.toLowerCase()
 
                 if (it.current() is Category && _pageTitle == _categoryName) {
-                    it.current().addPage(page)
+                    (it.current() as Category).addPage(page)
                     pageCount++
                     return
                 }
