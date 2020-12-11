@@ -74,6 +74,7 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  > ![Adding a recipe](https://github.com/cs100/final-project-ephuo001-btran117-vvo025/blob/master/recipeCreation.png?raw=true)
+ > ![Adding a category](https://github.com/cs100/final-project-ephuo001-btran117-vvo025/blob/master/categoryCreation.png?raw=true)
  ## Installation/Usage
  > Instructions on installing and running your application
  > For installation, you can clone this github repository and run it on Android Studio on an emulator. You can also connect your phone to Android Studio by changing your phone's settings to developer mode and installing the application through Android Studio.
