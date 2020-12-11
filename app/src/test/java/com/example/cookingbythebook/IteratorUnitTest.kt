@@ -92,6 +92,7 @@ class SecondUnitTest{
         assertEquals(testRecipeIterator?.current(), page2)
         assertEquals(testRecipeIterator?.getNext(), kotlin.Unit)
         assertEquals(testRecipeIterator?.current(), page3)
+        assertEquals(testRecipeIterator?.getNext(), kotlin.Unit)
         assertEquals(testRecipeIterator?.isDone(), true)
 
         assertEquals(testRecipeIterator?.first(), kotlin.Unit)
@@ -123,6 +124,7 @@ class ThirdUnitTest{
         assertEquals(testPreorderIterator.current(), page2)
         assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
         assertEquals(testPreorderIterator.current(), page3)
+        assertEquals(testPreorderIterator.getNext(), kotlin.Unit)
         assertEquals(testPreorderIterator.isDone(), true)
     }
 

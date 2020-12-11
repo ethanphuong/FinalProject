@@ -12,21 +12,18 @@ interface CookbookIterator {
     fun first()
     fun current(): Page?
 }
-interface CategoryIteratorInterface : CookbookIterator{
-    var atEnd: Boolean
-}
+
 
 interface PreorderIteratorInterface : CookbookIterator {
     var iterators: ArrayDeque<CookbookIterator>
 }
 
-class CategoryIterator(var arr: Category) : CookbookIterator, CategoryIteratorInterface {
-
-    override var atEnd: Boolean = false
+class CategoryIterator(var arr: Category) : CookbookIterator{
+    private var atEnd: Boolean = false
     private var index: Int = 0
     override fun getNext() {
         when {
-            index < arr.returnPagesCount() -> {
+            index < arr.returnPagesCount() - 1 -> {
                 index++
             }
             index == arr.returnPagesCount() - 1 -> {
@@ -85,7 +82,11 @@ class PreorderIterator(var titlePage: Page?) : CookbookIterator, PreorderIterato
     }
 
     override fun isDone(): Boolean {
-        return iterators.isEmpty()
+        if (iterators.isEmpty())
+        {
+            return true
+        }
+        return false
     }
 
     override fun current(): Page? {
